@@ -1,0 +1,10 @@
+{
+  "name": "design-tool",
+  "version": "0.0.1",
+  "description": "A trial and error to create a design tool",
+  "main": "dist/index.js",
+  "repository": "https://github.com/MrJojjson/design-tool.git",
+  "author": "Johan Sjöberg <johan.sjoberg@stenaline.com>",
+  "license": "MIT",
+  "private": true
+}
