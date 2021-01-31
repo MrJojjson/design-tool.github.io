@@ -1,10 +1,50 @@
 {
-  "name": "design-tool",
-  "version": "0.0.1",
-  "description": "A trial and error to create a design tool",
-  "main": "dist/index.js",
-  "repository": "https://github.com/MrJojjson/design-tool.git",
-  "author": "Johan Sjöberg <johan.sjoberg@stenaline.com>",
-  "license": "MIT",
-  "private": true
+    "name": "design-tool",
+    "version": "0.0.1",
+    "description": "A trial and error to create a design tool",
+    "main": "dist/index.js",
+    "repository": "https://github.com/MrJojjson/design-tool.git",
+    "author": "Johan Sjöberg <johan.sjoberg@stenaline.com>",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "prettier": "prettier --write 'src/**/*.{ts,tsx,mdx}' --ignore-path .gitignore",
+        "clean": "rm -rf dist",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "lint": "eslint --ignore-path ./.gitignore --fix",
+        "start": "snowpack dev",
+        "build": "snowpack build"
+    },
+    "dependencies": {
+        "react": "^17.0.1",
+        "react-redux": "^7.2.2",
+        "redux": "^4.0.5",
+        "redux-devtools-extension": "^2.13.8",
+        "redux-thunk": "^2.3.0",
+        "typescript": "^4.1.3"
+    },
+    "devDependencies": {
+        "@rollup/plugin-node-resolve": "^11.1.1",
+        "@snowpack/plugin-react-refresh": "^2.4.0",
+        "@types/ramda": "^0.27.36",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "@types/react-redux": "^7.1.16",
+        "@types/redux": "^3.6.0",
+        "@types/redux-thunk": "^2.1.0",
+        "@typescript-eslint/eslint-plugin": "^4.4.0",
+        "@typescript-eslint/parser": "^4.4.0",
+        "eslint": "^7.18.0",
+        "prettier": "^2.2.1",
+        "ramda": "^0.27.1",
+        "react-dom": "^17.0.1",
+        "rollup": "^2.38.1",
+        "rollup-plugin-livereload": "^2.0.0",
+        "rollup-plugin-postcss": "^3.1.8",
+        "rollup-plugin-serve": "^1.1.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-typescript2": "^0.29.0",
+        "snowpack": "^3.0.11"
+    }
 }
