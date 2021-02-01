@@ -1,10 +1,18 @@
 import {
+    EditPageAction,
+    EDIT_PAGE,
+    RENAME_PAGE,
+    MenuPageAction,
+    RenamePageAction,
+    MENU_PAGE,
+} from './../types/pageTypes';
+import {
     ACTIVE_PAGE,
-    NEW_PAGE,
+    ADD_PAGE,
     REMOVE_PAGE,
     IPage,
     ActivePageAction,
-    NewPageAction,
+    AddPageAction,
     RemovePageAction,
 } from '../types/pageTypes';
 
@@ -13,11 +21,28 @@ export const setActivePage = ({ id }: Pick<IPage, 'id'>): ActivePageAction => ({
     id,
 });
 
-export const addPage = (): NewPageAction => ({
-    type: NEW_PAGE,
+export const addPage = ({ id }: Pick<IPage, 'id'>): AddPageAction => ({
+    type: ADD_PAGE,
+    id,
 });
 
 export const removePage = ({ id }: Pick<IPage, 'id'>): RemovePageAction => ({
     type: REMOVE_PAGE,
+    id,
+});
+
+export const editPage = ({ id }: Pick<IPage, 'id'>): EditPageAction => ({
+    type: EDIT_PAGE,
+    id,
+});
+
+export const renamePage = ({ id, name }: Pick<IPage, 'id' | 'name'>): RenamePageAction => ({
+    type: RENAME_PAGE,
+    id,
+    name,
+});
+
+export const menuPage = ({ id }: Pick<IPage, 'id'>): MenuPageAction => ({
+    type: MENU_PAGE,
     id,
 });

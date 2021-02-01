@@ -1,14 +1,18 @@
 export const ACTIVE_PAGE = 'ACTIVE_PAGE';
-export const NEW_PAGE = 'NEW_PAGE';
+export const ADD_PAGE = 'ADD_PAGE';
 export const REMOVE_PAGE = 'REMOVE_PAGE';
-
+export const EDIT_PAGE = 'EDIT_PAGE';
+export const RENAME_PAGE = 'RENAME_PAGE';
+export const MENU_PAGE = 'MENU_PAGE';
 export interface IPage {
-    id: string | null;
+    id: string;
     name: string;
 }
 
 export type PagesState = {
     active: IPage['id'];
+    edit: IPage['id'];
+    menu: IPage['id'];
     defined: IPage[];
 };
 
@@ -17,8 +21,9 @@ export type ActivePageAction = {
     id: IPage['id'];
 };
 
-export type NewPageAction = {
-    type: 'NEW_PAGE';
+export type AddPageAction = {
+    type: 'ADD_PAGE';
+    id: IPage['id'];
 };
 
 export type RemovePageAction = {
@@ -26,4 +31,26 @@ export type RemovePageAction = {
     id: IPage['id'];
 };
 
-export type PageActions = ActivePageAction | NewPageAction | RemovePageAction;
+export type EditPageAction = {
+    type: 'EDIT_PAGE';
+    id: IPage['id'];
+};
+
+export type RenamePageAction = {
+    type: 'RENAME_PAGE';
+    id: IPage['id'];
+    name: IPage['name'];
+};
+
+export type MenuPageAction = {
+    type: 'MENU_PAGE';
+    id: IPage['id'];
+};
+
+export type PageActions =
+    | ActivePageAction
+    | AddPageAction
+    | RemovePageAction
+    | EditPageAction
+    | RenamePageAction
+    | MenuPageAction;

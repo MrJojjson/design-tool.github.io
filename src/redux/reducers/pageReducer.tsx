@@ -1,30 +1,64 @@
 import { filter } from 'ramda';
-import { uniqueId } from '../../utils/uniqueId';
-import { PagesState, PageActions, ACTIVE_PAGE, NEW_PAGE, REMOVE_PAGE } from '../types/pageTypes';
+import { alterReduxArray } from '../../utils/alterRedux';
+import {
+    PagesState,
+    PageActions,
+    ACTIVE_PAGE,
+    ADD_PAGE,
+    REMOVE_PAGE,
+    EDIT_PAGE,
+    RENAME_PAGE,
+    MENU_PAGE,
+} from '../types/pageTypes';
 
 const initialState: PagesState = {
-    active: null,
+    active: '',
+    edit: '',
+    menu: '',
     defined: [],
 };
 
 export const PageReducer = (state: PagesState = initialState, action: PageActions): PagesState => {
+    const { id } = action;
     switch (action.type) {
         case ACTIVE_PAGE:
             return {
                 ...state,
-                active: action.id,
+                active: id,
+                menu: '',
             };
-        case NEW_PAGE:
-            const uid = uniqueId({ prefix: '' });
+        case ADD_PAGE:
             return {
                 ...state,
-                defined: [...state.defined, { name: `New Page #${uid}`, id: uid }],
+                defined: [...state.defined, { name: `New Page #${id}`, id: id }],
+                active: id,
             };
         case REMOVE_PAGE:
-            const newDefined = filter(({ id }) => id !== action.id, state.defined);
+            const removedDefined = filter(({ id }) => id !== id, state.defined);
             return {
                 ...state,
-                defined: newDefined,
+                defined: removedDefined,
+                edit: '',
+                menu: '',
+                active: '',
+            };
+        case EDIT_PAGE:
+            return {
+                ...state,
+                edit: id,
+            };
+        case RENAME_PAGE:
+            return {
+                ...state,
+                defined: alterReduxArray({ array: state.defined, id: id, valueKey: 'name', value: action.name }),
+                menu: '',
+                edit: '',
+            };
+        case MENU_PAGE:
+            return {
+                ...state,
+                menu: state.menu === id ? '' : id,
+                active: '',
             };
     }
     return state;

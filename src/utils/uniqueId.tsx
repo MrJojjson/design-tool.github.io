@@ -1,10 +1,12 @@
-let lastId = 0;
+let lastPageId = 0;
+let lastArtboardId = 0;
 
-interface IUniqueId {
-    prefix?: string;
-}
+export const uniquePageId = (): string => {
+    lastPageId += 1;
+    return `pageId${lastPageId}`;
+};
 
-export const uniqueId = ({ prefix = 'id' }: IUniqueId): string => {
-    lastId += 1;
-    return `${prefix}${lastId}`;
+export const uniqueArtboardId = (): string => {
+    lastArtboardId += 1;
+    return `artboardId${lastArtboardId}`;
 };
