@@ -1,0 +1,22 @@
+# import User, UserErrors from "user.graphql"
+
+type RegisterUserNode {
+  # Register user
+  user: User
+  errors: UserErrors
+}
+
+type RegisterUserReturn {
+  # Register user returns
+  node: RegisterUserNode
+  status: Int!
+}
+
+type Mutation {
+  registerUser(
+    email: String!
+    name: String!
+    password: String!
+    confirmPassword: String!
+  ): RegisterUserReturn
+}
