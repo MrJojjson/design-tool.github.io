@@ -2,13 +2,20 @@ import { Document, model, Schema } from "mongoose";
 
 export type passwordType = string;
 
+export type UserChangePasswordType = {
+  oldPassword: passwordType;
+  newPassword: passwordType;
+  newConfirmPassword: passwordType;
+  _id: string;
+};
+
 export type UserType = {
   name: string;
   email: string;
   hash: string;
   salt: string;
   password: passwordType;
-  _id?: string;
+  _id: string;
 };
 
 const UserSchema = new Schema({

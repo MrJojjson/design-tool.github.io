@@ -17,11 +17,11 @@ module.exports = {
     routes: [
         { match: 'routes', src: '.*', dest: '/index.html' },
         {
-            src: '/api/auth',
+            src: '/graphql/auth',
             dest: (req, res) => authProxy.web(req, res),
         },
         {
-            src: '/api/graphql',
+            src: '/graphql',
             dest: (req, res) => serverProxy.web(req, res),
         },
     ],
@@ -31,5 +31,5 @@ module.exports = {
         bundle: false,
         routes: 'index.html',
     },
-    plugins: ['@snowpack/plugin-react-refresh', '@snowpack/plugin-dotenv'],
+    plugins: ['@snowpack/plugin-react-refresh', '@snowpack/plugin-dotenv', '@snowpack/plugin-sass'],
 };

@@ -1,4 +1,5 @@
 # import User, UserErrors from "user.graphql"
+# import Status from "status.graphql"
 
 type RegisterUserNode {
   # Register user
@@ -9,7 +10,7 @@ type RegisterUserNode {
 type RegisterUserReturn {
   # Register user returns
   node: RegisterUserNode
-  status: Int!
+  status: Status
 }
 
 type Mutation {

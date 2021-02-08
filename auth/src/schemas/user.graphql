@@ -12,7 +12,3 @@ type UserErrors {
   password: String
   confirmPassword: String
 }
-
-type Query {
-  user(email: String, name: String): User!
-}

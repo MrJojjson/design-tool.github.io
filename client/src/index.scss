@@ -1,11 +1,30 @@
+@import './common/sass/metrics.scss';
+* {
+    outline: none;
+    text-decoration: none;
+    font-size: $font-size-m;
+    font-family: 'NotoSans';
+}
+
 body,
 html,
-.App {
+#root,
+.app {
     position: relative;
     width: 100%;
     height: 100vh;
     display: flex;
     margin: 0;
+}
+
+.router {
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    max-width: $content-width;
+    width: 100%;
 }
 
 .palette {

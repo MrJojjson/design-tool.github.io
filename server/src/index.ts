@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors());
 app.use(json());
-app.use("/api/graphql", graphqlHTTP({ schema: schemas, graphiql: true }));
+app.use("/graphql", graphqlHTTP({ schema: schemas, graphiql: true }));
 
 connect(
   "mongodb://127.0.0.1:27017/design-tool",

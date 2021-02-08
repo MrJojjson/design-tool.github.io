@@ -1,25 +1,18 @@
 import React from 'react';
-import { Link } from '@reach/router';
+import { Button } from '../../components/atoms/button';
+import { Link } from '../../components/atoms/link';
+import './navbar.style.scss';
 
 export const Navbar = () => {
-    console.log('env', process);
-
     return (
-        <div className="navbar-fixed">
-            <nav className="z-depth-0">
-                <div className="nav-wrapper white">
-                    <Link
-                        to="/"
-                        style={{
-                            fontFamily: 'monospace',
-                        }}
-                        className="col s5 brand-logo center black-text"
-                    >
-                        <i className="material-icons">code</i>
-                        MERN
-                    </Link>
-                </div>
-            </nav>
-        </div>
+        <nav className="navbar">
+            <div className="content"></div>
+            <div className="profile">
+                <Link to="/register" title="Register " theme="secondary" />
+                <Link to="/login" title="Login " theme="secondary" />
+                <Button label="Button" onClick={() => {}} />
+                <Button label="Button" onClick={() => {}} theme="secondary" />
+            </div>
+        </nav>
     );
 };

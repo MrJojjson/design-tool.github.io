@@ -1,24 +1,27 @@
 import { User } from "../models/user";
 import { hashPassword, saltPassword } from "../utils/password";
 import { UserType } from "./../models/user/index";
-import { findUser } from "./../utils/selectors";
-import { validateRegisterInput } from "./../validation/register/index";
+import { findUserByEmail } from "./../utils/selectors";
+import { validateRegisterInput } from "../validation/validateRegisterInput";
 
 export const registerUserResolver = {
   registerUser(_: any, args: UserType) {
     const { errors, isValid } = validateRegisterInput(args);
+    console.log("errors", errors);
 
     if (!isValid) {
-      return { status: 400, node: { errors } };
+      return { status: { code: 400 }, node: { errors } };
     }
 
     const { name, email, password } = args || {};
 
-    return findUser({ email })
+    return findUserByEmail({ email })
       .then(async (existingUser: UserType) => {
+        console.log("existingUser", existingUser);
+
         if (existingUser?.email) {
           return {
-            status: 400,
+            status: { code: 400 },
             node: {
               errors: {
                 email: `Email: ${email} already exists.`,
@@ -36,14 +39,14 @@ export const registerUserResolver = {
           try {
             const { _id, name, email } = await newUser.save();
             return {
-              status: 200,
+              status: { code: 200 },
               node: { user: { _id, name, email } },
             };
           } catch (errors) {
-            return { status: 400, node: { errors } };
+            return { status: { code: 500 }, node: { errors } };
           }
         }
       })
-      .catch((err: any) => console.log(err));
+      .catch((error: any) => ({ status: { code: 404, error } }));
   },
 };

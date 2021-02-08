@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from '@reach/router';
+import { Text } from '../../components/atoms/text';
+import { Input } from '../../components/atoms/input';
+import { Button } from '../../components/atoms/button';
+import { Divider } from '../../components/atoms/divider';
+import { Link } from '../../components/atoms/link';
+import { userRegisterUserMutation } from '../../hooks/useRegisterUser';
+import { REGISTER_USER } from '../../api/authApi';
+import { RegisterUserMutationType } from '../../common/types/registerTypes';
+import { ApolloCache, FetchResult } from '@apollo/client';
+
+import '../auth.style.scss';
 
 type RegisterErrors = {
     name?: string;
@@ -14,94 +24,76 @@ export const Register = () => {
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
     const [errors, setErrors] = useState<RegisterErrors>({});
-    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const [registerUser] = userRegisterUserMutation(REGISTER_USER);
+
+    const handleRegisterUser = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const newUser = {
-            name,
-            email,
-            password,
-            confirmPassword,
-        };
-        console.log(newUser);
+        registerUser({
+            variables: { name, email, password, confirmPassword },
+            update: (
+                cache: ApolloCache<RegisterUserMutationType>,
+                { data: { registerUser } }: FetchResult<RegisterUserMutationType>,
+            ) => {
+                console.log('registerUser', registerUser);
+
+                // const cacheData = cache.readQuery({ query: GET_TODOS }) as ITodos;
+                // cache.writeQuery({
+                //   query: GET_TODOS,
+                //   data: {
+                //     getTodos: [...cacheData.getTodos, addTodo]
+                //   }
+                // });
+            },
+        });
     };
 
     return (
-        <div className="container">
-            <Link to="/" className="btn-flat waves-effect">
-                <i className="material-icons left">keyboard_backspace</i> Back to home
-            </Link>
-            <div className="col s12" style={{ paddingLeft: '11.250px' }}>
-                <h4>
-                    <b>Register</b> below
-                </h4>
-                <p className="grey-text text-darken-1">
-                    Already have an account? <Link to="/login">Log in</Link>
-                </p>
+        <div className="register">
+            <div className="title">
+                <Text tag="h2" fontSize="m">
+                    Register new user for `Design Tool?`
+                </Text>
             </div>
-            <form noValidate onSubmit={(e: React.FormEvent<HTMLFormElement>) => onSubmit(e)}>
-                <div className="input-field col s12">
-                    <input
-                        onChange={({ currentTarget }: React.ChangeEvent<HTMLInputElement>) =>
-                            setName(currentTarget.value)
-                        }
-                        autoComplete="name"
-                        value={name}
-                        id="name"
-                        type="text"
-                    />
-                    <label htmlFor="name">Name</label>
-                </div>
-                <div className="input-field col s12">
-                    <input
-                        onChange={({ currentTarget }: React.ChangeEvent<HTMLInputElement>) =>
-                            setEmail(currentTarget.value)
-                        }
-                        autoComplete="email"
-                        value={email}
-                        id="email"
-                        type="email"
-                    />
-                    <label htmlFor="email">Email</label>
-                </div>
-                <div className="input-field col s12">
-                    <input
-                        onChange={({ currentTarget }: React.ChangeEvent<HTMLInputElement>) =>
-                            setPassword(currentTarget.value)
-                        }
-                        autoComplete="new-password"
-                        value={password}
-                        id="password"
-                        type="password"
-                    />
-                    <label htmlFor="password">Password</label>
-                </div>
-                <div className="input-field col s12">
-                    <input
-                        onChange={({ currentTarget }: React.ChangeEvent<HTMLInputElement>) =>
-                            setConfirmPassword(currentTarget.value)
-                        }
-                        autoComplete="new-password"
-                        value={confirmPassword}
-                        id="password2"
-                        type="password"
-                    />
-                    <label htmlFor="password2">Confirm Password</label>
-                </div>
-                <div className="col s12" style={{ paddingLeft: '11.250px' }}>
-                    <button
-                        style={{
-                            width: '150px',
-                            borderRadius: '3px',
-                            letterSpacing: '1.5px',
-                            marginTop: '1rem',
-                        }}
-                        type="submit"
-                        className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                    >
-                        Sign up
-                    </button>
-                </div>
+            <form className="form" noValidate onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleRegisterUser(e)}>
+                <Input
+                    onChange={({ currentTarget }) => setName(currentTarget.value)}
+                    label="Name"
+                    placeholder="John Doe"
+                    id="name"
+                    type="text"
+                    autoComplete="name"
+                    error="No name added"
+                />
+                <Input
+                    onChange={({ currentTarget }) => setEmail(currentTarget.value)}
+                    label="Email"
+                    placeholder="abc@abc.com"
+                    id="email"
+                    type="email"
+                    autoComplete="email"
+                />
+                <Input
+                    onChange={({ currentTarget }) => setPassword(currentTarget.value)}
+                    label="Password"
+                    placeholder="One password to rule them all"
+                    id="password"
+                    type="password"
+                    autoComplete="current-password"
+                />
+                <Input
+                    onChange={({ currentTarget }) => setConfirmPassword(currentTarget.value)}
+                    label="Confirm Password"
+                    placeholder="Confirm password"
+                    id="confirmpassword"
+                    type="password"
+                    autoComplete="new-password"
+                />
+                <Button label="Register" onClick={() => {}} type="submit" theme="secondary" />
             </form>
+            <div className="navigation">
+                <Divider width="30vw" text="OR" />
+                <Link to="/login" title="Login to existing account" fontSize="l" />
+            </div>
         </div>
     );
 };

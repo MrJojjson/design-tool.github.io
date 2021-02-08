@@ -12,13 +12,15 @@ const Route = (props: { component: JSX.Element } & RouteComponentProps) => props
 
 export const App = (): JSX.Element => {
     return (
-        <div className="App">
+        <div className="app">
             <Navbar />
-            <Router>
-                <Route path="/" component={<Landing />} />
-                <Route path="/register" component={<Register />} />
-                <Route path="/login" component={<Login />} />
-            </Router>
+            <div className="content">
+                <Router className="router">
+                    <Route path="/" component={<Landing />} />
+                    <Route path="/register" component={<Register />} />
+                    <Route path="/login" component={<Login />} />
+                </Router>
+            </div>
         </div>
     );
 };

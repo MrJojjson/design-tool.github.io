@@ -1,23 +1,22 @@
 import { UserType } from "../models/user/index";
 import { deleteUser } from "../utils/modifiers";
-import { findUser } from "../utils/selectors";
-import { validateDeleteUserInput } from "../validation/delete/index";
+import { findUserByEmail } from "../utils/selectors";
+import { validateDeleteUserInput } from "../validation/validateDeleteUserInput";
 
 export const deleteUserResolver = {
-  async deleteUser(_: any, args: Pick<UserType, "email">) {
+  async deleteUser(_: any, args: Pick<UserType, "email" | "_id">) {
     const { errors, isValid } = validateDeleteUserInput(args);
 
     if (!isValid) {
-      return { status: 400, node: { errors } };
+      return { status: { code: 400 }, node: { errors } };
     }
-    const { email } = args || {};
-    const { name, _id } = (await findUser({ email })) || {};
+    const { name, _id, email } = (await findUserByEmail({ ...args })) || {};
 
     if (!_id) {
       return {
-        status: 400,
+        status: { code: 400 },
         node: {
-          errors: `User ${email} has already been deleted`,
+          errors: `User ${args.email} has already been deleted`,
         },
       };
     }
@@ -27,20 +26,20 @@ export const deleteUserResolver = {
 
         if (deletedCount !== 0 && ok !== 0) {
           return {
-            status: 200,
+            status: { code: 200 },
             node: { user: { email }, deleteStatus: { ...data } },
           };
         }
         return {
-          status: 404,
+          status: { code: 500 },
           node: {
             errors: `Something went wrong when deleting user ${email} (${name}).`,
             deleteStatus: { ...data },
           },
         };
       })
-      .catch((errors: any) => {
-        return { status: 404, node: { errors } };
+      .catch((error: any) => {
+        return { status: { code: 404, error } };
       });
   },
 };

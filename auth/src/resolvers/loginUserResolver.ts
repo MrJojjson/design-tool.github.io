@@ -2,23 +2,26 @@ import jwt from "jsonwebtoken";
 import { keys } from "../config/keys";
 import { UserType } from "../models/user/index";
 import { validPassword } from "../utils/password";
-import { findUser } from "../utils/selectors";
-import { validateLoginInput } from "../validation/login/index";
+import { findUserByEmail } from "../utils/selectors";
+import { validateLoginInput } from "../validation/validateLoginInput";
 
 export const loginUserResolver = {
-  loginUser(_: any, args: Pick<UserType, "email" | "password">) {
+  loginUser(_: any, args: Pick<UserType, "email" | "password" | "_id">) {
     const { errors, isValid } = validateLoginInput(args);
 
     if (!isValid) {
-      return { status: 400, node: { errors } };
+      return { status: { code: 400 }, node: { errors } };
     }
+
     const { email, password } = args || {};
 
-    return findUser({ email })
+    return findUserByEmail({ email })
       .then(async (existingUser: UserType) => {
+        console.log("existingUser", existingUser);
+
         if (!existingUser?.email) {
           return {
-            status: 404,
+            status: { code: 400 },
             node: {
               errors: {
                 email: `Email: ${email} not found.`,
@@ -46,7 +49,7 @@ export const loginUserResolver = {
           );
           try {
             return {
-              status: 200,
+              status: { code: 200 },
               node: {
                 token: `Bearer ${token}`,
                 user: {
@@ -56,11 +59,11 @@ export const loginUserResolver = {
               },
             };
           } catch (errors) {
-            return { status: 400, node: { errors } };
+            return { status: { code: 400 }, node: { errors } };
           }
         } else {
           return {
-            status: 400,
+            status: { code: 400 },
             node: {
               errors: {
                 password: `Incorrect password.`,
@@ -69,6 +72,6 @@ export const loginUserResolver = {
           };
         }
       })
-      .catch((err: any) => console.log(err));
+      .catch((error: any) => ({ status: { code: 400, error } }));
   },
 };

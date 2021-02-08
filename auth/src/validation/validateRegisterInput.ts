@@ -1,11 +1,13 @@
+import { UserType } from "./../models/user/index";
 import Validator from "validator";
 import isEmpty from "is-empty";
 
-type IAuthValidateRegisterInput = {
-  name?: string;
-  email?: string;
-  password?: string;
-  confirmPassword?: string;
+type AuthValidateRegisterInputType = {
+  name?: UserType["name"];
+  email?: UserType["email"];
+  password?: UserType["password"];
+  confirmPassword?: UserType["password"];
+  _id?: UserType["_id"];
 };
 
 export const validateRegisterInput = ({
@@ -13,11 +15,11 @@ export const validateRegisterInput = ({
   email = "",
   password = "",
   confirmPassword = "",
-}: IAuthValidateRegisterInput): {
-  errors: IAuthValidateRegisterInput;
+}: AuthValidateRegisterInputType): {
+  errors: AuthValidateRegisterInputType;
   isValid: boolean;
 } => {
-  const errors: IAuthValidateRegisterInput = {};
+  const errors: AuthValidateRegisterInputType = {};
 
   if (Validator.isEmpty(name)) {
     errors.name = "Name field is required";

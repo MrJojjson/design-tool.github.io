@@ -9,6 +9,7 @@ import passport from "passport";
 import { json } from "body-parser";
 import { connect } from "mongoose";
 import resolvers from "./resolvers";
+import cors from "cors";
 
 const schema = loadSchemaSync(join(__dirname, "./schemas/*.graphql"), {
   loaders: [new GraphQLFileLoader()],
@@ -21,6 +22,7 @@ const schemaWithResolvers = addResolversToSchema({
 
 const app = express();
 
+app.use(cors());
 app.use(json());
 
 connect(keys.mongoURI, {
@@ -34,7 +36,7 @@ app.use(passport.initialize());
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("./config/passport")(passport);
 app.use(
-  "/api/graphql/auth",
+  "/graphql/auth",
   graphqlHTTP({
     schema: schemaWithResolvers,
     graphiql: true,

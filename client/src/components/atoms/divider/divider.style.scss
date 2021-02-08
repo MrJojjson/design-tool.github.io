@@ -1,0 +1,22 @@
+@import '../../../common/sass/colors.scss';
+@import '../../../common/sass/metrics.scss';
+@import '../../../common/sass/mixins/flex.scss';
+
+.divider {
+    width: 100%;
+    height: $spacing-xxs;
+    border-radius: $border-radius-r;
+    &.primary {
+        background-color: $color-primary-background;
+    }
+    &.secondary {
+        background-color: $color-secondary-background;
+    }
+}
+
+.divider-with-text {
+    @include flex(center, center, row);
+    .text {
+        padding: $spacing-none $spacing-xxs;
+    }
+}

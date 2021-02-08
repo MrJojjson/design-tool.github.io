@@ -1,4 +1,5 @@
 # import User from "user.graphql"
+# import Status from "status.graphql"
 
 type DeleteStatus {
   # Delete status from mongo
@@ -18,7 +19,7 @@ type DeleteUserNode {
 type DeleteUserReturn {
   # Delete user returns
   node: DeleteUserNode
-  status: Int!
+  status: Status
 }
 
 type Mutation {
