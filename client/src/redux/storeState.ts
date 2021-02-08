@@ -6,8 +6,6 @@ import { PagesState } from './types/pageTypes';
 export interface IStoreState {
     pages: PagesState;
     artboards: ArtboardState;
-    auth: AuthState;
-    errors: ErrorState;
 }
 
 export type IStoreStateField = keyof IStoreState;
