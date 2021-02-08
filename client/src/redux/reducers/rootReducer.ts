@@ -12,11 +12,9 @@ import { AuthReducer } from './AuthReducer';
 
 export type ThunkResult<R> = ThunkAction<R, IStoreState, undefined, any>;
 
-export type StoreAction = PageActions | ArtboardActions | AuthActions | ErrorActions;
+export type StoreAction = PageActions | ArtboardActions;
 
 export const rootReducer: Reducer<IStoreState, StoreAction> = combineReducers({
     pages: PageReducer,
     artboards: ArtboardReducer,
-    auth: AuthReducer,
-    errors: ErrorReducer,
 });
