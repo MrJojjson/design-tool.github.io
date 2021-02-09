@@ -1,1 +1,0 @@
-import n from"../../../../_snowpack/pkg/react.js";import"./button.style.css.proxy.js";export const Button=({onClick:t,label:o,theme:r="primary",...e})=>n.createElement("button",{onClick:()=>t,className:`button ${r}`,...e},o);
