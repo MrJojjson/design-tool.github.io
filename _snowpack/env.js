@@ -1,0 +1,1 @@
+export const SNOWPACK_PUBLIC_ENV="PROD",SNOWPACK_PUBLIC_SERVER_URL="http://localhost:3001/graphql",SNOWPACK_PUBLIC_AUTH_URL="http://localhost:3002/graphql",SNOWPACK_PUBLIC_PUBLIC_URL="https://mrjojjson.github.io/poletas",MODE="production",NODE_ENV="production",SSR=!1;

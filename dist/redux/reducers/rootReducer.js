@@ -1,0 +1,1 @@
+import{ErrorReducer as r}from"./errorReducer.js";import{combineReducers as e}from"../../../_snowpack/pkg/redux.js";import{ArtboardReducer as o}from"./artboardReducer.js";import{PageReducer as d}from"./pageReducer.js";import{AuthReducer as t}from"./AuthReducer.js";export const rootReducer=e({pages:d,artboards:o,auth:t,errors:r});

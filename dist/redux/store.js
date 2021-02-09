@@ -1,0 +1,1 @@
+import{createStore as o,applyMiddleware as e,compose as r}from"../../_snowpack/pkg/redux.js";import s from"../../_snowpack/pkg/redux-thunk.js";import{rootReducer as t}from"./reducers/rootReducer.js";import{composeWithDevTools as p}from"../../_snowpack/pkg/redux-devtools-extension.js";const c=p({});export const store=o(t,r(c(e(s))));

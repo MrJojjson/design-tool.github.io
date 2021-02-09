@@ -1,0 +1,1 @@
+import o from"../../../../_snowpack/pkg/react.js";import"./text.style.css.proxy.js";export const Text=({tag:e="p",children:t,theme:r="primary",fontSize:s="m",oneLine:p,className:c,...m})=>o.createElement(e,{className:`text ${r} ${e} ${s} ${p?"line":null} ${c}`,...m},t);
