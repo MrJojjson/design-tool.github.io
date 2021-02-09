@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable no-undef */
 // Example: snowpack.config.js
 // The added "@type" comment will enable TypeScript type information via VSCode, etc.
 const httpProxy = require('http-proxy');
