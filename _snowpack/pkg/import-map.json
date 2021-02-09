@@ -1,0 +1,19 @@
+{
+  "imports": {
+    "@apollo/client": "./@apollo/client.js",
+    "@apollo/react-hooks": "./@apollo/react-hooks.js",
+    "@habx/apollo-multi-endpoint-link": "./@habx/apollo-multi-endpoint-link.js",
+    "@reach/router": "./@reach/router.js",
+    "axios": "./axios.js",
+    "graphql-tag": "./graphql-tag.js",
+    "jwt-decode": "./jwt-decode.js",
+    "ramda": "./ramda.js",
+    "react": "./react.js",
+    "react-dom": "./react-dom.js",
+    "react-redux": "./react-redux.js",
+    "react-rnd": "./react-rnd.js",
+    "redux": "./redux.js",
+    "redux-devtools-extension": "./redux-devtools-extension.js",
+    "redux-thunk": "./redux-thunk.js"
+  }
+}
