@@ -21,7 +21,7 @@
         "graphql:types": "graphql-codegen --config codegen.yml",
         "clean:build": "rm -rf ./build/dist && rm -rf ./build/_snowpack",
         "push:gh-pages": "gh-pages -d ./build",
-        "create:gh-pages": "yarn build:prod && yarn clean:build && yarn push:gh-pages"
+        "create:gh-pages": "rm -rf ./build && yarn build:prod && yarn clean:build && yarn push:gh-pages"
     },
     "dependencies": {
         "@apollo/client": "^3.3.7",
