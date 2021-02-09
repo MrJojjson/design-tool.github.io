@@ -19,7 +19,7 @@
         "start:prod": "cp -v .env.prod .env && snowpack dev",
         "start:fetchtypes": "yarn graphql:types && snowpack dev",
         "graphql:types": "graphql-codegen --config codegen.yml",
-        "create:gh-pages": "yarn build:prod && rm -rf ./build/dist && rm -rf ./build/_snowpack && cp -r ./build ./docs"
+        "create:gh-pages": "yarn build:prod && rm -rf ./build/dist && rm -rf ./build/_snowpack && cp -r ./build ../docs"
     },
     "dependencies": {
         "@apollo/client": "^3.3.7",
