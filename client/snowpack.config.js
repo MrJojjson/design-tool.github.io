@@ -31,5 +31,19 @@ module.exports = {
         bundle: false,
         routes: 'index.html',
     },
-    plugins: ['@snowpack/plugin-react-refresh', '@snowpack/plugin-dotenv', '@snowpack/plugin-sass'],
+    buildOptions: {
+        minify: true,
+        bundle: true,
+        preload: true,
+        splitting: true,
+        treeshake: true,
+        manifest: true,
+        target: 'es2020',
+    },
+    plugins: [
+        '@snowpack/plugin-react-refresh',
+        '@snowpack/plugin-dotenv',
+        '@snowpack/plugin-sass',
+        '@snowpack/plugin-webpack',
+    ],
 };

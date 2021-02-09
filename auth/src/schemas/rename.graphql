@@ -19,7 +19,7 @@ type RenameUserNode {
 type RenameUserReturn {
   # Rename user returns
   node: RenameUserNode
-  status: Int!
+  status: Status
 }
 
 type Mutation {

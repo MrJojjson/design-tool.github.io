@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { model } from "mongoose";
 import { ExtractJwt, Strategy } from "passport-jwt";
-import { keys } from "./keys";
 
 const User = model("User");
 
@@ -10,7 +9,7 @@ module.exports = (passport: any) => {
     new Strategy(
       {
         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: keys.secretOrKey,
+        secretOrKey: "secret",
       },
       (jwt_payload, done) => {
         User.findById(jwt_payload.id)

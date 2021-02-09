@@ -4,12 +4,12 @@ import { GraphQLFileLoader } from "@graphql-tools/graphql-file-loader";
 import { addResolversToSchema } from "@graphql-tools/schema";
 import express from "express";
 import { graphqlHTTP } from "express-graphql";
-import { keys } from "./config/keys";
 import passport from "passport";
 import { json } from "body-parser";
 import { connect } from "mongoose";
 import resolvers from "./resolvers";
 import cors from "cors";
+require("dotenv").config();
 
 const schema = loadSchemaSync(join(__dirname, "./schemas/*.graphql"), {
   loaders: [new GraphQLFileLoader()],
@@ -25,10 +25,13 @@ const app = express();
 app.use(cors());
 app.use(json());
 
-connect(keys.mongoURI, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-})
+connect(
+  `mongodb+srv://MrJojjson:${process.env.MONGO_DB_CLOUD_KEY}@graphql.047oo.mongodb.net/graphql?retryWrites=true&w=majority`,
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  }
+)
   .then(() => console.log("Connected to AUTH database"))
   .catch((err) => console.log(err));
 

@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import { keys } from "../config/keys";
 import { UserType } from "../models/user/index";
 import { validPassword } from "../utils/password";
 import { findUserByEmail } from "../utils/selectors";
@@ -17,8 +16,6 @@ export const loginUserResolver = {
 
     return findUserByEmail({ email })
       .then(async (existingUser: UserType) => {
-        console.log("existingUser", existingUser);
-
         if (!existingUser?.email) {
           return {
             status: { code: 400 },
@@ -42,7 +39,7 @@ export const loginUserResolver = {
               _id,
               name,
             },
-            keys.secretOrKey,
+            "secret",
             {
               expiresIn: 31556926, // 1 year in seconds
             }

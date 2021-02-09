@@ -11,7 +11,7 @@ type LoginUserNode {
 type LoginUserReturn {
   # Login user returnss
   node: LoginUserNode
-  status: Int!
+  status: Status
 }
 
 type Mutation {

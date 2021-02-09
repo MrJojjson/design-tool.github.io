@@ -10,8 +10,8 @@ export const apolloClient = new ApolloClient({
     link: ApolloLink.from([
         new MultiAPILink({
             endpoints: {
-                design: 'http://localhost:3001/graphql',
-                auth: 'http://localhost:3002/graphql/auth',
+                design: process.env.SNOWPACK_PUBLIC_SERVER_URL,
+                auth: process.env.SNOWPACK_PUBLIC_AUTH_URL,
             },
             createHttpLink: () => createHttpLink(),
         }),
