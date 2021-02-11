@@ -6,6 +6,7 @@
   "author": "Johan Sjöberg",
   "license": "MIT",
   "private": true,
+  "homepage": "https://mrjojjson.github.io/poletas",
   "workspaces": [
     "client/*",
     "server/*",

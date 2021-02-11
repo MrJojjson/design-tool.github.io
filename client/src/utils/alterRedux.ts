@@ -3,7 +3,7 @@ import { curry, map, when, propEq, assoc } from 'ramda';
 
 interface IAlterReduxArray {
     array: readonly Record<string, any>[];
-    id: string;
+    id: string | undefined;
     value: string | number | boolean;
     valueKey: string;
 }

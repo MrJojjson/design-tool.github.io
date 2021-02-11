@@ -38,7 +38,7 @@ export type EditPageAction = {
 export type RenamePageAction = {
     type: 'RENAME_PAGE';
     id: IPage['id'];
-    title: IPage['title'];
+    title: string | number | boolean;
 };
 
 export type MenuPageAction = {

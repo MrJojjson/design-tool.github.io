@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
-import { Text } from '../../components/atoms/text';
-import { Input } from '../../components/atoms/input';
-import { Button } from '../../components/atoms/button';
-import { Divider } from '../../components/atoms/divider';
-import { Link } from '../../components/atoms/link';
-import { userRegisterUserMutation } from '../../hooks/useRegisterUser';
-import { REGISTER_USER } from '../../api/authApi';
-import { RegisterUserMutationType } from '../../common/types/registerTypes';
+import { Text } from '../../../components/atoms/text';
+import { Input } from '../../../components/atoms/input';
+import { Button } from '../../../components/atoms/button';
+import { Divider } from '../../../components/atoms/divider';
+import { Link } from '../../../components/atoms/link';
+import { userRegisterUserMutation } from '../../../hooks/useRegisterUser';
+import { REGISTER_USER } from '../../../api/authApi';
+import { RegisterUserMutationType } from '../../../common/types/registerTypes';
 import { ApolloCache, FetchResult } from '@apollo/client';
 
 import '../auth.style.scss';
 
-type RegisterErrors = {
+type SignupErrors = {
     name?: string;
     email?: string;
     password?: string;
     confirmPassword?: string;
 };
 
-export const Register = () => {
+export const SignUp = () => {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
-    const [errors, setErrors] = useState<RegisterErrors>({});
+    const [errors, setErrors] = useState<SignupErrors>({});
     const [registerUser] = userRegisterUserMutation(REGISTER_USER);
 
     const handleRegisterUser = (e: React.FormEvent<HTMLFormElement>) => {
@@ -48,7 +48,7 @@ export const Register = () => {
     };
 
     return (
-        <div className="register">
+        <div className="signup">
             <div className="title">
                 <Text tag="h2" fontSize="m">
                     Register new user for `Design Tool?`
@@ -88,7 +88,7 @@ export const Register = () => {
                     type="password"
                     autoComplete="new-password"
                 />
-                <Button label="Register" onClick={() => {}} type="submit" theme="secondary" />
+                <Button label="Sign up" onClick={() => {}} type="submit" theme="secondary" />
             </form>
             <div className="navigation">
                 <Divider width="30vw" text="OR" />

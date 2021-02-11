@@ -1,4 +1,4 @@
-export type themeType = 'primary' | 'secondary';
+export type themeType = 'primary' | 'secondary' | 'highlight';
 
 export type fontSizeType = 's' | 'm' | 'l' | 'xl';
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Button } from '../../components/atoms/button';
-import { Divider } from '../../components/atoms/divider';
-import { Input } from '../../components/atoms/input';
-import { Link } from '../../components/atoms/link';
-import { Text } from '../../components/atoms/text';
+import { Button } from '../../../components/atoms/button';
+import { Divider } from '../../../components/atoms/divider';
+import { Input } from '../../../components/atoms/input';
+import { Link } from '../../../components/atoms/link';
+import { Text } from '../../../components/atoms/text';
 import '../auth.style.scss';
 
 type LoginErrors = {
@@ -52,7 +52,7 @@ export const Login = () => {
             </form>
             <div className="navigation">
                 <Divider width="30vw" text="OR" />
-                <Link to="/register" title="Register an account" fontSize="l" />
+                <Link to="/signup" title="Sign up to an account" fontSize="l" />
             </div>
         </div>
     );

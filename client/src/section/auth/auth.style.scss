@@ -1,26 +1,25 @@
-@import '../common/sass/colors.scss';
-@import '../common/sass/metrics.scss';
-@import '../common/sass/mixins/flex.scss';
+@import '../../common/sass/colors.scss';
+@import '../../common/sass/metrics.scss';
+@import '../../common/sass/mixins/flex.scss';
+@import '../../common/sass/mixins/section.scss';
 
-$title-height: 30%;
-$form-height: 40%;
-$register-height: 30%;
 $element-spacing: $spacing-m;
 
 .login,
-.register {
+.signup {
     height: 100%;
     @include flex(center, center, column);
+    @include section(null, true, false);
     .title {
         @include flex(center, flex-end, column);
-        height: $title-height;
+        margin-bottom: $spacing-l;
         .text {
             margin-bottom: $element-spacing;
         }
     }
     .form {
         @include flex(center, center, column);
-        height: $form-height;
+        margin-bottom: $spacing-xxl;
         input,
         button {
             margin-bottom: $element-spacing;
@@ -29,7 +28,6 @@ $element-spacing: $spacing-m;
     }
     .navigation {
         @include flex(center, flex-start, column);
-        height: $register-height;
         .divider-with-text {
             margin-bottom: $element-spacing;
         }

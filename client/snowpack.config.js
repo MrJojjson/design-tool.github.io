@@ -33,10 +33,9 @@ module.exports = {
         bundle: false,
         routes: 'index.html',
     },
-    buildOptions: {
+    optimize: {
         minify: true,
         bundle: true,
-        preload: true,
         splitting: true,
         treeshake: true,
         manifest: true,
@@ -46,6 +45,6 @@ module.exports = {
         '@snowpack/plugin-react-refresh',
         '@snowpack/plugin-dotenv',
         '@snowpack/plugin-sass',
-        '@snowpack/plugin-webpack',
+        '@snowpack/plugin-optimize',
     ],
 };

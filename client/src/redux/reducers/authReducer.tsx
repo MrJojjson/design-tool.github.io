@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { isEmpty } from 'ramda';
 import { AuthState, AuthActions, USER_LOADING, SET_CURRENT_USER, REGISTER_USER, LOGIN_USER } from '../types/authTypes';
 

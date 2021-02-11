@@ -1,0 +1,10 @@
+@import '../../common/sass/mixins/section.scss';
+@import '../../common/sass/mixins/flex.scss';
+
+.signup-section {
+    @include section('highlight', false, true);
+    @include flex(center, center, column);
+    button {
+        width: 20%;
+    }
+}

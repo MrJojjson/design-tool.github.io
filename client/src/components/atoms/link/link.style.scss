@@ -3,7 +3,7 @@
 
 .link {
     transition: all $transition-speed;
-
+    white-space: nowrap;
     &.primary {
         color: $color-primary;
     }

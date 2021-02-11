@@ -21,6 +21,12 @@
         background-color: $color-secondary-background;
         border: 1px solid $color-secondary-border;
     }
+
+    &.highlight {
+        color: $color-secondary;
+        background-color: transparent;
+        border: 1px solid $color-secondary-border;
+    }
     &:hover {
         border-radius: $border-radius-xs;
     }

@@ -21,9 +21,9 @@ export type AuthMessages =
           registration: string;
           login: string;
       }
-    | {};
+    | unknown;
 
-export type AuthErrors = RegisterUserType | {};
+export type AuthErrors = RegisterUserType | unknown;
 
 export type AuthState = {
     isAuthenticated: boolean;

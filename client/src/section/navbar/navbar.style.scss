@@ -1,0 +1,49 @@
+@import '../../common/sass/colors.scss';
+@import '../../common/sass/metrics.scss';
+@import '../../common/sass/mixins/flex.scss';
+@import '../../common/sass/mixins/section.scss';
+
+$navbar-width: $section-alt-width;
+$navbar-logo-width: 15%;
+$navbar-content-width: 70%;
+$navbar-profile-width: $navbar-width - ($navbar-logo-width + $navbar-content-width);
+
+@mixin navbarItems() {
+    padding: $spacing-s 0;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+@mixin navbarItemPadding() {
+    padding: $spacing-s;
+}
+
+.navbar {
+    @include flex(flex-start, flex-start, row);
+    width: $navbar-width;
+    height: auto;
+    box-sizing: border-box;
+    margin: 0 auto $spacing-xxl auto;
+    .logo {
+        @include flex(center, center, row);
+        @include navbarItems();
+    }
+    .links {
+        @include flex(center, flex-end, row);
+        @include navbarItems();
+        width: 100%;
+        a {
+            @include navbarItemPadding();
+            &:last-of-type {
+                border-right: 1px solid $color-primary-border;
+            }
+        }
+    }
+    .profile {
+        @include flex(center, center, row);
+        @include navbarItems();
+        a {
+            @include navbarItemPadding();
+        }
+    }
+}
