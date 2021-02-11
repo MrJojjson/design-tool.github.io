@@ -1,0 +1,1 @@
+import l,{useState as r}from"../_snowpack/pkg/react.js";export const DragComp=({initPos:s={x:0,y:0}})=>{const[t,n]=r(s),[i,a]=r(!1),g=e=>{a(!1)},p=({pageX:e,pageY:o,button:c})=>{c!==0||!e||!o||(a(!0),n({x:e,y:o}))};return l.createElement("div",{draggable:"true",onDragEnd:e=>g(e),onDrag:e=>p(e),className:"App",style:{position:"absolute",left:`${t.x}px`,top:`${t.y}px`}},"Comp")};
