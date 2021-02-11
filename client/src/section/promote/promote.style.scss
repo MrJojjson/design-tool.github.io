@@ -1,5 +1,6 @@
 @import '../../common/sass/mixins/section.scss';
 @import '../../common/sass/mixins/flex.scss';
+@import '../../common/sass/mixins/breakpoints.scss';
 
 .promote {
     @include flex(center, center, column);
@@ -25,6 +26,29 @@
         flex-direction: column-reverse;
         .promote-title {
             margin-top: $default-title-spacing;
+        }
+    }
+    @include mobile-breakpoint {
+        &.row {
+            flex-direction: column;
+            .promote-title {
+                margin-right: 0;
+                margin-bottom: $default-title-spacing;
+            }
+        }
+        &.row-reverse {
+            flex-direction: column;
+            .promote-title {
+                margin-left: 0;
+                margin-bottom: $default-title-spacing;
+            }
+        }
+        &.column-reverse {
+            flex-direction: column;
+            .promote-title {
+                margin-top: 0;
+                margin-bottom: $default-title-spacing;
+            }
         }
     }
 }

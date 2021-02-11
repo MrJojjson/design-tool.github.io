@@ -1,7 +1,13 @@
-$tablet-breakpoint: 30em;
-$small-breakpoint: 55em;
-$medium-breakpoint: 65em;
-$large-breakpoint: 75em;
+$tablet-breakpoint: 768px;
+$small-breakpoint: 992px;
+$medium-breakpoint: 1200px;
+$large-breakpoint: 1500px;
+
+@mixin mobile-breakpoint {
+    @media (max-width: #{$tablet-breakpoint}) {
+        @content;
+    }
+}
 
 @mixin tablet-breakpoint {
     @media (min-width: #{$tablet-breakpoint}) and (max-width: #{$small-breakpoint}) {

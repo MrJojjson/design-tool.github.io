@@ -15,7 +15,7 @@ type PromoteType = {
 export const Promote = ({ title, image, direction = 'column' }: PromoteType) => {
     return (
         <section className={`promote ${direction}`}>
-            <Text className="promote-title" tag="h3" fontSize="l" theme="primary">
+            <Text className="promote-title" tag="h3" fontSize="m" theme="primary">
                 {title}
             </Text>
             <Image {...image} />

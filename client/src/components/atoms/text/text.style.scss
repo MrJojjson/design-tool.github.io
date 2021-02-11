@@ -57,4 +57,27 @@
     &.line {
         white-space: nowrap;
     }
+
+    @include mobile-breakpoint {
+        &.h1,
+        &.h2,
+        &.h3,
+        &.h4 {
+            &.s {
+                font-size: $header-size-s;
+            }
+
+            &.m {
+                font-size: $header-size-s;
+            }
+
+            &.l {
+                font-size: $header-size-m;
+            }
+
+            &.xl {
+                font-size: $header-size-l;
+            }
+        }
+    }
 }
