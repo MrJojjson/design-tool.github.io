@@ -13,6 +13,7 @@ $spacing-m: 25px;
 $spacing-l: 35px;
 $spacing-xl: 50px;
 $spacing-xxl: 90px;
+$spacing-xxxl: 150px;
 
 $height-none: 0px;
 $height-xs: 20px;
@@ -49,6 +50,8 @@ $active-size: 1px;
 $transition-speed: 0.25s;
 
 $max-width: 100vw;
+$default-app-spacing: $spacing-xxxl;
+$default-title-spacing: $spacing-xl;
 
 $section-min-height: 20vh;
 $section-alt-width: 70%;

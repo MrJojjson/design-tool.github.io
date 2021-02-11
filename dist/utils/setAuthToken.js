@@ -1,1 +1,8 @@
-import tg from"../../_snowpack/pkg/axios.js";export const setAuthToken=o=>{o?tg.defaults.headers.common.Authorization=o:delete tg.defaults.headers.common.Authorization};
+import axios from "../../_snowpack/pkg/axios.js";
+export const setAuthToken = (token) => {
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = token;
+  } else {
+    delete axios.defaults.headers.common["Authorization"];
+  }
+};

@@ -1,1 +1,42 @@
-import{isEmpty as ng}from"../../../_snowpack/pkg/ramda.js";import{USER_LOADING as rg,SET_CURRENT_USER as sg,REGISTER_USER as cp,LOGIN_USER as ug}from"../types/authTypes.js";const Jd={isAuthenticated:!1,user:null,loading:!1,messages:{},errors:{}};export const AuthReducer=(e=Jd,s)=>{const{payload:t}=s;switch(s.type){case cp:return{...e,messages:{registration:t}};case ug:return{...e,messages:{login:t}};case sg:return{...e,isAuthenticated:!ng(t),user:t,loading:!1};case rg:return{...e,loading:t};default:return e}};
+import {isEmpty} from "../../../_snowpack/pkg/ramda.js";
+import {USER_LOADING, SET_CURRENT_USER, REGISTER_USER, LOGIN_USER} from "../types/authTypes.js";
+const initialState = {
+  isAuthenticated: false,
+  user: null,
+  loading: false,
+  messages: {},
+  errors: {}
+};
+export const AuthReducer = (state = initialState, action) => {
+  const {payload} = action;
+  switch (action.type) {
+    case REGISTER_USER:
+      return {
+        ...state,
+        messages: {
+          registration: payload
+        }
+      };
+    case LOGIN_USER:
+      return {
+        ...state,
+        messages: {
+          login: payload
+        }
+      };
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        isAuthenticated: !isEmpty(payload),
+        user: payload,
+        loading: false
+      };
+    case USER_LOADING:
+      return {
+        ...state,
+        loading: payload
+      };
+    default:
+      return state;
+  }
+};

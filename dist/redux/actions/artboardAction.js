@@ -1,1 +1,14 @@
-import{ACTIVE_ARTBOARD as ty}from"../types/artboardTypes.js";import{ADD_ARTBOARD as ry,REMOVE_ARTBOARD as ey}from"../types/artboardTypes.js";export const addArtboard=({pageId:t})=>({type:ry,pageId:t});export const removeArtboard=({id:t})=>({type:ey,id:t});export const setActiveArtboard=({id:t})=>({type:ty,id:t});
+import {ACTIVE_ARTBOARD} from "../types/artboardTypes.js";
+import {ADD_ARTBOARD, REMOVE_ARTBOARD} from "../types/artboardTypes.js";
+export const addArtboard = ({pageId}) => ({
+  type: ADD_ARTBOARD,
+  pageId
+});
+export const removeArtboard = ({id}) => ({
+  type: REMOVE_ARTBOARD,
+  id
+});
+export const setActiveArtboard = ({id}) => ({
+  type: ACTIVE_ARTBOARD,
+  id
+});

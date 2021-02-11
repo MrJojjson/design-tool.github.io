@@ -1,1 +1,21 @@
-import{map as Ld}from"../../../../_snowpack/pkg/ramda.js";import p from"../../../../_snowpack/pkg/react.js";import{useDispatch as tm,useSelector as am}from"../../../../_snowpack/pkg/react-redux.js";import{addArtboard as om}from"../../../redux/actions/artboardAction.js";import{getPageArtboards as sm}from"../../../redux/selectors/artboardSelector.js";import{Artboard as cm}from"./artboard.js";import"./artboardStyle.css";export const Artboards=()=>{const r=tm(),{active:t}=am((({pages:r})=>r)),a=am((r=>sm({state:r,pageId:t})));return p.createElement("div",{className:"artboards"},p.createElement("button",{onClick:()=>r(om({pageId:t}))},"Add artboard"),p.createElement("div",{className:"artboards-content"},Ld((r=>p.createElement(cm,{...r})),a)))};
+import {map} from "../../../../_snowpack/pkg/ramda.js";
+import React from "../../../../_snowpack/pkg/react.js";
+import {useDispatch, useSelector} from "../../../../_snowpack/pkg/react-redux.js";
+import {addArtboard} from "../../../redux/actions/artboardAction.js";
+import {getPageArtboards} from "../../../redux/selectors/artboardSelector.js";
+import {Artboard} from "./artboard.js";
+import "./artboardStyle.css";
+export const Artboards = () => {
+  const dispatch = useDispatch();
+  const {active: pageId} = useSelector(({pages}) => pages);
+  const artboards = useSelector((state) => getPageArtboards({state, pageId}));
+  return /* @__PURE__ */ React.createElement("div", {
+    className: "artboards"
+  }, /* @__PURE__ */ React.createElement("button", {
+    onClick: () => dispatch(addArtboard({pageId}))
+  }, "Add artboard"), /* @__PURE__ */ React.createElement("div", {
+    className: "artboards-content"
+  }, map((props) => /* @__PURE__ */ React.createElement(Artboard, {
+    ...props
+  }), artboards)));
+};

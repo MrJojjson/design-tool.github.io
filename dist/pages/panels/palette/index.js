@@ -1,1 +1,28 @@
-import{map as Ld}from"../../../../_snowpack/pkg/ramda.js";import p from"../../../../_snowpack/pkg/react.js";import{useDispatch as tm,useSelector as am}from"../../../../_snowpack/pkg/react-redux.js";import{useAddPage as pm,useGetPages as nm}from"../../../api/pages.js";import{uniquePageId as mm}from"../../../utils/uniqueId.js";import{Page as lm}from"./pages/page.js";export const Palette=()=>{tm();const{defined:e=[],active:a}=am((({pages:e})=>e)),{onAddPage:t}=pm(),{loading:o,error:r,pages:s=[]}=nm();return console.log("pages",s),console.log("loading",o),p.createElement("div",{className:"palette"},p.createElement("div",{className:"pages"},Ld((e=>p.createElement(lm,{...e})),s),p.createElement("button",{onClick:()=>{mm(),t({title:"xczvxzcx"})}},"Add page")),p.createElement("div",{className:"page-content"}))};
+import {map} from "../../../../_snowpack/pkg/ramda.js";
+import React from "../../../../_snowpack/pkg/react.js";
+import {useDispatch, useSelector} from "../../../../_snowpack/pkg/react-redux.js";
+import {useAddPage, useGetPages} from "../../../api/pages.js";
+import {uniquePageId} from "../../../utils/uniqueId.js";
+import {Page} from "./pages/page.js";
+export const Palette = () => {
+  const dispatch = useDispatch();
+  const {defined = [], active} = useSelector(({pages: pages2}) => pages2);
+  const {onAddPage} = useAddPage();
+  const {loading, error, pages = []} = useGetPages();
+  console.log("pages", pages);
+  console.log("loading", loading);
+  return /* @__PURE__ */ React.createElement("div", {
+    className: "palette"
+  }, /* @__PURE__ */ React.createElement("div", {
+    className: "pages"
+  }, map((props) => /* @__PURE__ */ React.createElement(Page, {
+    ...props
+  }), pages), /* @__PURE__ */ React.createElement("button", {
+    onClick: () => {
+      const uid = uniquePageId();
+      onAddPage({title: "xczvxzcx"});
+    }
+  }, "Add page")), /* @__PURE__ */ React.createElement("div", {
+    className: "page-content"
+  }));
+};

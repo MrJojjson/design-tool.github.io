@@ -1,1 +1,35 @@
-import{EDIT_PAGE as py,RENAME_PAGE as iy,MENU_PAGE as oy}from"../types/pageTypes.js";import{ACTIVE_PAGE as dy,ADD_PAGE as s,REMOVE_PAGE as sy}from"../types/pageTypes.js";export const setActivePage=({id:e})=>({type:dy,id:e});export const addPage=({id:e})=>({type:s,id:e});export const removePage=({id:e})=>({type:sy,id:e});export const editPage=({id:e})=>({type:py,id:e});export const renamePage=({id:e,title:t})=>({type:iy,id:e,title:t});export const menuPage=({id:e})=>({type:oy,id:e});
+import {
+  EDIT_PAGE,
+  RENAME_PAGE,
+  MENU_PAGE
+} from "../types/pageTypes.js";
+import {
+  ACTIVE_PAGE,
+  ADD_PAGE,
+  REMOVE_PAGE
+} from "../types/pageTypes.js";
+export const setActivePage = ({id}) => ({
+  type: ACTIVE_PAGE,
+  id
+});
+export const addPage = ({id}) => ({
+  type: ADD_PAGE,
+  id
+});
+export const removePage = ({id}) => ({
+  type: REMOVE_PAGE,
+  id
+});
+export const editPage = ({id}) => ({
+  type: EDIT_PAGE,
+  id
+});
+export const renamePage = ({id, title}) => ({
+  type: RENAME_PAGE,
+  id,
+  title
+});
+export const menuPage = ({id}) => ({
+  type: MENU_PAGE,
+  id
+});

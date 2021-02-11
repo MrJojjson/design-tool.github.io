@@ -1,1 +1,21 @@
-import p,{useState as t}from"../_snowpack/pkg/react.js";export const DragComp=({initPos:o={x:0,y:0}})=>{const[e,a]=t(o),[r,n]=t(!1);return p.createElement("div",{draggable:"true",onDragEnd:t=>{n(!1)},onDrag:t=>(({pageX:t,pageY:o,button:e})=>{0===e&&t&&o&&(n(!0),a({x:t,y:o}))})(t),className:"App",style:{position:"absolute",left:`${e.x}px`,top:`${e.y}px`}},"Comp")};
+import React, {useState} from "../_snowpack/pkg/react.js";
+export const DragComp = ({initPos = {x: 0, y: 0}}) => {
+  const [pos, setPos] = useState(initPos);
+  const [dragging, setDragging] = useState(false);
+  const onDragEnd = (e) => {
+    setDragging(false);
+  };
+  const onDrag = ({pageX: x, pageY: y, button}) => {
+    if (button !== 0 || !x || !y)
+      return;
+    setDragging(true);
+    setPos({x, y});
+  };
+  return /* @__PURE__ */ React.createElement("div", {
+    draggable: "true",
+    onDragEnd: (event) => onDragEnd(event),
+    onDrag: (event) => onDrag(event),
+    className: "App",
+    style: {position: "absolute", left: `${pos.x}px`, top: `${pos.y}px`}
+  }, "Comp");
+};

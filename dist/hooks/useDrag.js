@@ -1,1 +1,16 @@
-import{useCallback as e,useState as t}from"../../_snowpack/pkg/react.js";const c={x:0,y:0};export const useDrag=()=>{const[n,o]=t(c),[r,g]=t(!1);return{pos:n,dragging:r,onDrag:e((({clientX:n,clientY:t,button:r,...c})=>{0===r&&n&&t&&(g(!0),o({x:n,y:t}))}),[]),onDragEnd:e((()=>{g(!1)}),[])}};
+import {useCallback, useState} from "../../_snowpack/pkg/react.js";
+const initPos = {x: 0, y: 0};
+export const useDrag = () => {
+  const [pos, setPos] = useState(initPos);
+  const [dragging, setDragging] = useState(false);
+  const onDrag = useCallback(({clientX: x, clientY: y, button, ...rest}) => {
+    if (button !== 0 || !x || !y)
+      return;
+    setDragging(true);
+    setPos({x, y});
+  }, []);
+  const onDragEnd = useCallback(() => {
+    setDragging(false);
+  }, []);
+  return {pos, dragging, onDrag, onDragEnd};
+};

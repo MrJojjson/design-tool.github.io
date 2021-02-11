@@ -1,1 +1,40 @@
-import tg from"../../../_snowpack/pkg/axios.js";import{setAuthToken as eg}from"../../utils/setAuthToken.js";import og from"../../../_snowpack/pkg/jwt-decode.js";import{SET_CURRENT_USER as sg,USER_LOADING as rg}from"../types/authTypes.js";import{GET_ERRORS as ag}from"../types/errorTypes.js";export const userRegister=({payload:t,navigate:e})=>o=>{tg.post("/api/auth/register",t).then((()=>e("/login"))).catch((t=>o({type:ag,payload:t.response.data})))};export const userLogin=({payload:t,navigate:e})=>o=>{tg.post("/api/auth/login",t).then((({data:t})=>{const{token:s}=t;localStorage.setItem("jwtToken",s),eg(s);const r=og(s);o(setCurrentUser(r)),e("/")})).catch((t=>o({type:ag,payload:t.response.data})))};export const setCurrentUser=t=>({type:sg,payload:t});export const setUserLoading=()=>({type:rg});export const logoutUser=()=>t=>{localStorage.removeItem("jwtToken"),eg(!1),t(setCurrentUser({}))};
+import axios from "../../../_snowpack/pkg/axios.js";
+import {setAuthToken} from "../../utils/setAuthToken.js";
+import jwt_decode from "../../../_snowpack/pkg/jwt-decode.js";
+import {SET_CURRENT_USER, USER_LOADING} from "../types/authTypes.js";
+import {GET_ERRORS} from "../types/errorTypes.js";
+export const userRegister = ({payload, navigate}) => (dispatch) => {
+  axios.post("/api/auth/register", payload).then(() => navigate("/login")).catch((err) => dispatch({
+    type: GET_ERRORS,
+    payload: err.response.data
+  }));
+};
+export const userLogin = ({payload, navigate}) => (dispatch) => {
+  axios.post("/api/auth/login", payload).then(({data}) => {
+    const {token} = data;
+    localStorage.setItem("jwtToken", token);
+    setAuthToken(token);
+    const decoded = jwt_decode(token);
+    dispatch(setCurrentUser(decoded));
+    navigate("/");
+  }).catch((err) => dispatch({
+    type: GET_ERRORS,
+    payload: err.response.data
+  }));
+};
+export const setCurrentUser = (decoded) => {
+  return {
+    type: SET_CURRENT_USER,
+    payload: decoded
+  };
+};
+export const setUserLoading = () => {
+  return {
+    type: USER_LOADING
+  };
+};
+export const logoutUser = () => (dispatch) => {
+  localStorage.removeItem("jwtToken");
+  setAuthToken(false);
+  dispatch(setCurrentUser({}));
+};

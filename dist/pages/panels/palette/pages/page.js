@@ -1,1 +1,13 @@
-import p from"../../../../../_snowpack/pkg/react.js";import{useDispatch as tm,useSelector as am}from"../../../../../_snowpack/pkg/react-redux.js";import{menuPage as dm}from"../../../../redux/actions/pageAction.js";import{PageMenu as fm}from"./menu.js";export const Page=({title:e,id:t})=>{const r=tm(),{active:n,edit:o,menu:i,defined:a=[]}=am((({pages:e})=>e));return p.createElement("span",null,p.createElement("button",{onClick:()=>r(dm({id:t}))},":"),i===t&&p.createElement(fm,{id:t}))};
+import React from "../../../../../_snowpack/pkg/react.js";
+import {useDispatch, useSelector} from "../../../../../_snowpack/pkg/react-redux.js";
+import {menuPage} from "../../../../redux/actions/pageAction.js";
+import {PageMenu} from "./menu.js";
+export const Page = ({title, id}) => {
+  const dispatch = useDispatch();
+  const {active, edit, menu, defined = []} = useSelector(({pages}) => pages);
+  return /* @__PURE__ */ React.createElement("span", null, /* @__PURE__ */ React.createElement("button", {
+    onClick: () => dispatch(menuPage({id}))
+  }, ":"), menu === id && /* @__PURE__ */ React.createElement(PageMenu, {
+    id
+  }));
+};
