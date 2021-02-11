@@ -28,6 +28,10 @@
         font-size: $font-size-xl;
     }
 
+    &.underline {
+        text-decoration: underline;
+    }
+
     &[aria-current] {
         color: $color-highlight;
         font-weight: $font-weight-thin;

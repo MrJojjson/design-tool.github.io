@@ -1,4 +1,6 @@
 @import './common/sass/metrics.scss';
+@import './common/sass/mixins/flex.scss';
+
 * {
     outline: none;
     text-decoration: none;
@@ -12,7 +14,6 @@ html,
 .app {
     position: relative;
     width: 100%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -24,7 +25,31 @@ html,
     .router {
         height: 100%;
     }
+    header,
+    footer {
+        width: 100%;
+        padding-left: $default-app-spacing;
+        padding-right: $default-app-spacing;
+        box-sizing: border-box;
+    }
     .content {
         min-height: 70vh;
+        padding: 0 $default-app-spacing;
+        box-sizing: border-box;
+        .hero,
+        .poke {
+            margin-left: -$default-app-spacing;
+            margin-right: -$default-app-spacing;
+        }
+
+        section {
+            margin-bottom: $default-app-spacing;
+        }
+
+        .title {
+            width: 100%;
+            @include flex(center, center, row);
+            margin-bottom: $spacing-xl;
+        }
     }
 }

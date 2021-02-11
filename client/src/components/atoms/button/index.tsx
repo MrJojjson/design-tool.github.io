@@ -9,11 +9,12 @@ type ButtonType = {
     label: string;
     type?: buttonType;
     theme?: themeType;
+    className?: string;
 };
 
-export const Button = ({ onClick, label, theme = 'primary', ...rest }: ButtonType) => {
+export const Button = ({ onClick, label, theme = 'primary', className, ...rest }: ButtonType) => {
     return (
-        <button onClick={() => onClick} className={`button ${theme}`} {...rest}>
+        <button onClick={() => onClick} className={`button ${theme} ${className}`} {...rest}>
             {label}
         </button>
     );

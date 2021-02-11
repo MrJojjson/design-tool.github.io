@@ -8,7 +8,7 @@ $footer-width: 70%;
     width: $footer-width;
     grid-template-columns: auto auto auto;
     grid-template-rows: 25% auto;
-    padding: $spacing-xxl 0;
+    padding: 0 $default-app-spacing $default-app-spacing $default-app-spacing;
     margin: 0 auto;
     .title {
         display: flex;

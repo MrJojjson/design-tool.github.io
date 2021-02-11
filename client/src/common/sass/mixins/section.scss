@@ -3,6 +3,7 @@
 
 @mixin section($type, $margin: true, $background: false) {
     min-height: $section-min-height;
+    padding: $default-app-spacing;
     @if $type == 'primary' {
         border-top: 1px solid $color-primary-border;
     } @else if $type == 'secondary' {

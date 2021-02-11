@@ -1,0 +1,18 @@
+@import '../../common/sass/mixins/section.scss';
+@import '../../common/sass/mixins/flex.scss';
+
+.hero {
+    @include flex(center, center, column);
+    position: relative;
+    figure {
+        border-radius: 0;
+    }
+    .hero-title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        @include flex(center, center, row);
+    }
+}

@@ -1,0 +1,30 @@
+@import '../../common/sass/mixins/section.scss';
+@import '../../common/sass/mixins/flex.scss';
+
+.promote {
+    @include flex(center, center, column);
+    &.row {
+        flex-direction: row;
+        .promote-title {
+            margin-right: $default-title-spacing;
+        }
+    }
+    &.column {
+        flex-direction: column;
+        .promote-title {
+            margin-bottom: $default-title-spacing;
+        }
+    }
+    &.row-reverse {
+        flex-direction: row-reverse;
+        .promote-title {
+            margin-left: $default-title-spacing;
+        }
+    }
+    &.column-reverse {
+        flex-direction: column-reverse;
+        .promote-title {
+            margin-top: $default-title-spacing;
+        }
+    }
+}

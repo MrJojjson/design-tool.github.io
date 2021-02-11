@@ -1,0 +1,20 @@
+@import '../../common/sass/mixins/section.scss';
+@import '../../common/sass/mixins/flex.scss';
+
+.poke {
+    @include section('highlight', false, true);
+    @include flex(flex-start, center, column);
+    &.start {
+        align-items: flex-start;
+    }
+    &.center {
+        align-items: center;
+    }
+    &.end {
+        align-items: flex-end;
+    }
+    box-sizing: border-box;
+    .poke-title {
+        margin-bottom: $spacing-m;
+    }
+}

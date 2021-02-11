@@ -6,7 +6,7 @@ import './footer.style.scss';
 
 export const Footer = () => {
     return (
-        <div className="footer">
+        <footer className="footer">
             <Text tag="h3" fontSize="s" className="title">
                 What we offer
             </Text>
@@ -43,6 +43,6 @@ export const Footer = () => {
                     <Link to="/signup" title="Sign up" />
                 </li>
             </ul>
-        </div>
+        </footer>
     );
 };

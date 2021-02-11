@@ -41,10 +41,5 @@ module.exports = {
         manifest: true,
         target: 'es2020',
     },
-    plugins: [
-        '@snowpack/plugin-react-refresh',
-        '@snowpack/plugin-dotenv',
-        '@snowpack/plugin-sass',
-        '@snowpack/plugin-optimize',
-    ],
+    plugins: ['@snowpack/plugin-react-refresh', '@snowpack/plugin-dotenv', '@snowpack/plugin-sass'],
 };

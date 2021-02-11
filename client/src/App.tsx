@@ -1,14 +1,10 @@
+import { RouteComponentProps, Router } from '@reach/router';
 import React from 'react';
-import { Router, RouteComponentProps } from '@reach/router';
-
 import { Landing } from './pages/landing';
-import { Navbar } from './section/navbar';
-import { Artboards } from './pages/panels/artboards';
-import { Palette } from './pages/panels/palette';
-import { SignUpSection } from './section/signup';
-import { SignUp } from './pages/signup';
 import { Login } from './pages/login';
+import { SignUp } from './pages/signup';
 import { Footer } from './section/footer';
+import { Navbar } from './section/navbar';
 
 const Route = (props: { component: JSX.Element } & RouteComponentProps) => props.component;
 
