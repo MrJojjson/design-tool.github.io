@@ -1,1 +1,1 @@
-import e from"../../_snowpack/pkg/axios.js";export const setAuthToken=o=>{o?e.defaults.headers.common.Authorization=o:delete e.defaults.headers.common.Authorization};
+import tg from"../../_snowpack/pkg/axios.js";export const setAuthToken=o=>{o?tg.defaults.headers.common.Authorization=o:delete tg.defaults.headers.common.Authorization};
