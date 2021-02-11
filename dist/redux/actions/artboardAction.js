@@ -1,1 +1,0 @@
-import{ACTIVE_ARTBOARD as r}from"../types/artboardTypes.js";import{ADD_ARTBOARD as o,REMOVE_ARTBOARD as e}from"../types/artboardTypes.js";export const addArtboard=({pageId:t})=>({type:o,pageId:t}),removeArtboard=({id:t})=>({type:e,id:t}),setActiveArtboard=({id:t})=>({type:r,id:t});
