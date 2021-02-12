@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [auth]
+    branches: "auth/**"
 
 jobs:
   build:
