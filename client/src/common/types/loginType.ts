@@ -1,4 +1,4 @@
-export interface RegisterUserInterface {
+export interface LoginUserInterface {
     node: {
         errors: {
             name?: string;
@@ -9,13 +9,11 @@ export interface RegisterUserInterface {
     };
 }
 
-export type RegisterUserMutationType = {
-    registerUser: RegisterUserInterface;
+export type LoginUserMutationType = {
+    loginUser: LoginUserInterface;
 };
 
-export type RegisterUserType = {
-    name: string;
+export type LoginUserType = {
     email: string;
     password: string;
-    confirmPassword: string;
 };

@@ -7,7 +7,6 @@ const authProxy = httpProxy.createServer({ target: process.env.SNOWPACK_PUBLIC_A
 const serverProxy = httpProxy.createServer({ target: process.env.SNOWPACK_PUBLIC_SERVER_URL });
 
 /** @type {import("snowpack").SnowpackUserConfig } */
-/** @type {import.meta.env.SNOWPACK_PUBLIC_* } */
 
 // eslint-disable-next-line no-undef
 module.exports = {

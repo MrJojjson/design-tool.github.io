@@ -4,7 +4,11 @@ export const REGISTER_USER = gql`
     mutation RegisterUser($name: String!, $email: String!, $password: String!, $confirmPassword: String!)
     @api(name: auth) {
         registerUser(name: $name, email: $email, password: $password, confirmPassword: $confirmPassword) {
-            status
+            status {
+                code
+                error
+                message
+            }
             node {
                 user {
                     email
@@ -23,8 +27,12 @@ export const REGISTER_USER = gql`
 
 export const LOGIN_USER = gql`
     mutation LoginUser($email: String!, $password: String!) @api(name: auth) {
-        login(email: $email, password: $password) {
-            status
+        loginUser(email: $email, password: $password) {
+            status {
+                code
+                error
+                message
+            }
             node {
                 token
                 user {

@@ -20,7 +20,7 @@ export const validateRegisterInput = ({
   isValid: boolean;
 } => {
   const errors: AuthValidateRegisterInputType = {};
-
+  console.log('Validation')
   if (Validator.isEmpty(name)) {
     errors.name = "Name field is required";
   }
