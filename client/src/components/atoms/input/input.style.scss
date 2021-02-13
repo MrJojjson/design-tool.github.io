@@ -6,6 +6,7 @@ $input-height: $height-m;
 $label-padding: 1px $spacing-s;
 
 $label-shown-pos: ($height-s / 3);
+$error-shown-pos: ($height-s / 4);
 
 $input-border: 1px solid $color-primary-border;
 
@@ -22,6 +23,7 @@ $input-border: 1px solid $color-primary-border;
         border: $input-border;
         box-sizing: border-box;
         min-width: 20vw;
+        width: 100%;
         &:hover {
             border-radius: $border-radius-xs;
         }
@@ -65,7 +67,7 @@ $input-border: 1px solid $color-primary-border;
     &.error--show .error {
         transition: all $transition-speed;
         position: absolute;
-        bottom: $label-shown-pos;
+        bottom: -$error-shown-pos;
         background-color: $color-error;
         border: none;
         opacity: 1;

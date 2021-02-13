@@ -1,8 +1,8 @@
-name: Client CI
+name: Client CD
 
 on:
-  pull_request:
-    branches: "client/**"
+  push:
+    branches: [main]
 
 jobs:
   build:
@@ -20,3 +20,4 @@ jobs:
           node-version: "14.x"
       - run: yarn install --frozen-lockfile
       - run: yarn run build:prod
+      - run: yarn deploy:gh-pages

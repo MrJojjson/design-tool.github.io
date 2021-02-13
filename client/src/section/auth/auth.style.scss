@@ -4,12 +4,15 @@
 @import '../../common/sass/mixins/section.scss';
 
 $element-spacing: $spacing-m;
+$desktop-width: 40%;
+$tablet-width: 60%;
+$mobile-width: 100%;
 
 .login,
 .signup {
     height: 100%;
     @include flex(center, center, column);
-    @include section(null, true, false);
+    padding: $default-app-spacing 0;
     .title {
         @include flex(center, flex-end, column);
         margin-bottom: $spacing-l;
@@ -20,16 +23,30 @@ $element-spacing: $spacing-m;
     .form {
         @include flex(center, center, column);
         margin-bottom: $spacing-xxl;
-        input,
+        width: $desktop-width;
+        div,
         button {
+            width: 100%;
             margin-bottom: $element-spacing;
-            min-width: 25vw;
         }
     }
     .navigation {
         @include flex(center, flex-start, column);
+        width: $desktop-width;
         .divider-with-text {
             margin-bottom: $element-spacing;
+        }
+    }
+    @include tablet-breakpoint {
+        .form,
+        .navigation {
+            width: $tablet-width;
+        }
+    }
+    @include mobile-breakpoint {
+        .form,
+        .navigation {
+            width: $mobile-width;
         }
     }
 }

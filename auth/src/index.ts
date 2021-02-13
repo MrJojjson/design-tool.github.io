@@ -39,7 +39,7 @@ app.use(passport.initialize());
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require("./config/passport")(passport);
 app.use(
-  "/graphql/auth",
+  "/graphql",
   graphqlHTTP({
     schema: schemaWithResolvers,
     graphiql: true,
