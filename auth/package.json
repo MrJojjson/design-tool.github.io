@@ -6,7 +6,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "ts-node-dev src/index.ts"
+    "start:dev": "ts-node-dev src/index.ts",
+    "start": "node src/index.ts",
+    "build": "tsc --project ./"
   },
   "dependencies": {
     "@graphql-tools/utils": "^7.2.5",
