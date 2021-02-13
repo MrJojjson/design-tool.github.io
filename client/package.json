@@ -21,8 +21,7 @@
         "start:fetchtypes": "yarn graphql:types && snowpack dev",
         "graphql:types": "graphql-codegen --config codegen.yml",
         "clean:build": "rm -rf ./build",
-        "deploy": "yarn build:prod && yarn deploy:gh-pages",
-        "deploy:gh-pages": "gh-pages -d build"
+        "deploy": "yarn build:prod && yarn deploy:gh-pages"
     },
     "dependencies": {
         "@apollo/client": "^3.3.7",
