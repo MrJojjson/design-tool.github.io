@@ -38,3 +38,4 @@ jobs:
           heroku_app_name: "poletas" #Must be unique in Heroku
           heroku_email: ${{secrets.EMAIL}}
           appdir: "./auth/build"
+          remote_branch: "main"
