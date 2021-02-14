@@ -8,7 +8,7 @@ on:
 jobs:
   ClientBuildCD:
     runs-on: ubuntu-20.04
-    if: startsWith(github.head_ref, 'client/') == true
+    if: github.ref == 'refs/heads/client/**'
     defaults:
       run:
         shell: bash
