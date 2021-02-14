@@ -18,7 +18,7 @@ export const loginUserResolver = {
     return findUserByEmail({ email })
       .then(
         async (existingUser: UserType | (UserType & Document<any>) | null) => {
-          if (!existingUser || !existingUser?.email) {
+          if (!existingUser?.email) {
             return {
               status: { code: 400 },
               node: {

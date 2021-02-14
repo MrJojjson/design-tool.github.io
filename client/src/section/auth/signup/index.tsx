@@ -27,15 +27,14 @@ export const SignUp = () => {
     });
 
     const [errors, setErrors] = useState<SignupErrors>({});
-    const [registerUser] = userRegisterUserMutation(REGISTER_USER);
+    const { registerUser, data } = userRegisterUserMutation(REGISTER_USER);
+    console.log('data', data);
 
     const handleRegisterUser = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         registerUser({
             variables: { ...user },
             update: (cache: ApolloCache<RegisterUserMutationType>, { data }: FetchResult<RegisterUserMutationType>) => {
-                console.log('hj');
-
                 if (data) {
                     const { errors } = data.registerUser?.node;
                     setErrors(errors);
@@ -68,43 +67,43 @@ export const SignUp = () => {
             <form className="form" noValidate onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleRegisterUser(e)}>
                 <Input
                     onBlur={({ currentTarget }) => setUserData(currentTarget)}
-                    onChange={() => errors.name && removeError('name')}
+                    onChange={() => errors?.name && removeError('name')}
                     label="Name"
                     placeholder="John Doe"
                     id="name"
                     type="text"
                     autoComplete="name"
-                    error={errors.name}
+                    error={errors?.name}
                 />
                 <Input
                     onBlur={({ currentTarget }) => setUserData(currentTarget)}
-                    onChange={() => errors.email && removeError('email')}
+                    onChange={() => errors?.email && removeError('email')}
                     label="Email"
                     placeholder="abc@abc.com"
                     id="email"
                     type="email"
                     autoComplete="email"
-                    error={errors.email}
+                    error={errors?.email}
                 />
                 <Input
                     onBlur={({ currentTarget }) => setUserData(currentTarget)}
-                    onChange={() => errors.password && removeError('password')}
+                    onChange={() => errors?.password && removeError('password')}
                     label="Password"
                     placeholder="One password to rule them all"
                     id="password"
                     type="password"
                     autoComplete="current-password"
-                    error={errors.password}
+                    error={errors?.password}
                 />
                 <Input
                     onBlur={({ currentTarget }) => setUserData(currentTarget)}
-                    onChange={() => errors.confirmPassword && removeError('confirmPassword')}
+                    onChange={() => errors?.confirmPassword && removeError('confirmPassword')}
                     label="Confirm Password"
                     placeholder="Confirm password"
-                    id="confirmpassword"
+                    id="confirmPassword"
                     type="password"
                     autoComplete="new-password"
-                    error={errors.confirmPassword}
+                    error={errors?.confirmPassword}
                 />
                 <Button label="Sign up" onClick={() => {}} type="submit" theme="secondary" />
             </form>

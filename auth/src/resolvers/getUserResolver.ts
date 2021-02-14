@@ -14,7 +14,7 @@ export const getUserResolver = {
     return findUser({ ...args })
       .then(
         async (existingUser: UserType | (UserType & Document<any>) | null) => {
-          if (!existingUser || (!existingUser?.email && email)) {
+          if (!existingUser?.email && email) {
             return {
               status: { code: 400 },
               node: {
@@ -38,9 +38,9 @@ export const getUserResolver = {
             status: { code: 200 },
             node: {
               user: {
-                name: existingUser.name,
-                email: existingUser.email,
-                _id: existingUser._id,
+                name: existingUser?.name,
+                email: existingUser?.email,
+                _id: existingUser?._id,
               },
             },
           };
