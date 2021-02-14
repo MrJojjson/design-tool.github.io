@@ -1,8 +1,9 @@
 name: Auth CD
 
 on:
-  push:
-    branches: [main]
+  pull_request:
+    types: [closed]
+    branches: "auth/**"
 
 jobs:
   build:
@@ -35,7 +36,7 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "poletas" #Must be unique in Heroku
+          heroku_app_name: "poletas"
           heroku_email: ${{secrets.EMAIL}}
           appdir: "./auth/build"
           remote_branch: "main"
