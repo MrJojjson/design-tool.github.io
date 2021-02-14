@@ -1,14 +1,14 @@
 name: Client CD
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
   ClientBuildCD:
     runs-on: ubuntu-20.04
-    if: startsWith(github.head_ref, 'client/') == true
+    if: contains('refs/heads/client', github.ref)
     defaults:
       run:
         shell: bash
@@ -34,6 +34,8 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build client with snowpack set to prod
         run: yarn run build:prod
+        env:
+          HEROKU_API_URL: ${{secrets.HEROKU_API_URL}}
       - name: Deploy to github pages
 
         uses: peaceiris/actions-gh-pages@v3
