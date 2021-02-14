@@ -1,22 +1,21 @@
 name: Auth CD
 
 on:
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
-      - "main"
+      - "auth/**"
 
 jobs:
   build:
     runs-on: ubuntu-20.04
-    #if: github.ref == 'refs/heads/auth/**'
     defaults:
       run:
         shell: bash
         working-directory: auth
 
     steps:
-      - run: echo ${{github.ref}}
-      - run: echo ${{github}}
       - uses: actions/checkout@v2
       - name: Use Node.js
         uses: actions/setup-node@v1
