@@ -2,7 +2,9 @@ name: Client CI
 
 on:
   pull_request:
-    branches: "client/**"
+    branches:
+      - "client/**"
+    types: [opened]
 
 jobs:
   build:
