@@ -33,7 +33,7 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install yarn with frozen lockfile
         run: yarn install --frozen-lockfile
-      - name: Build auth with tsc
+      - name: Build auth with tsc to ./build
         run: yarn build
       - uses: akhileshns/heroku-deploy@v3.10.9
         with:
