@@ -8,7 +8,6 @@ on:
 jobs:
   ClientBuildCI:
     runs-on: ubuntu-20.04
-    # if: startsWith(github.head_ref, 'client/') == true
     defaults:
       run:
         shell: bash
