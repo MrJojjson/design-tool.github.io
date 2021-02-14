@@ -6,7 +6,7 @@ on:
       - "opened"
 
 jobs:
-  Node:
+  ClientCI:
     runs-on: ubuntu-20.04
     if: startsWith(github.head_ref, 'client/') == true
     defaults:
