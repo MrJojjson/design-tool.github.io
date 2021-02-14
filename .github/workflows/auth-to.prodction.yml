@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
-    if: github.head_ref == auth/*
+    if: github.head_ref == 'auth/*'
     defaults:
       run:
         shell: bash
