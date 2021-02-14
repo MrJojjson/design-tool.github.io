@@ -8,7 +8,7 @@ on:
 jobs:
   AuthBuildCD:
     runs-on: ubuntu-20.04
-    if: startsWith(github.head_ref, 'auth/') == true
+    if: contains('refs/heads/auth', github.ref)
     defaults:
       run:
         shell: bash

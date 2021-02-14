@@ -12,8 +12,7 @@ export const apolloClient = new ApolloClient({
         new MultiAPILink({
             endpoints: {
                 design: 'http://localhost:3001',
-                // auth: 'https://poletas.herokuapp.com',
-                auth: 'http://localhost:3002',
+                auth: process.env.HEROKU_API_URL || 'http://localhost:3002',
             },
             createHttpLink: () => createHttpLink(),
         }),
