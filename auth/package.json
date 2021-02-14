@@ -3,12 +3,14 @@
   "version": "0.0.1",
   "main": "src/index.ts",
   "license": "MIT",
-  "type": "module",
   "private": true,
   "scripts": {
     "start:dev": "ts-node-dev src/index.ts",
     "start": "node src/index.ts",
-    "build": "tsc --project ./"
+    "build": "tsc --project .",
+    "copy:files:docker": "cp -r ./src/schemas/ /schemas",
+    "build:docker": "docker build -t poletas/auth .",
+    "run:docker": "docker run --env-file .env poletas/auth"
   },
   "dependencies": {
     "@graphql-tools/utils": "^7.2.5",
