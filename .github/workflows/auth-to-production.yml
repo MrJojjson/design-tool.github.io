@@ -2,14 +2,13 @@ name: Auth CD
 
 on:
   push:
-    paths-ignore:
-      - "auth/**"
     branches:
       - main
 
 jobs:
   AuthBuildCD:
     runs-on: ubuntu-20.04
+    if: startsWith(github.head_ref, 'auth/') == true
     defaults:
       run:
         shell: bash

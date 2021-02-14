@@ -1,15 +1,13 @@
 name: Client CD
 
 on:
-  push:
-    paths-ignore:
-      - "client/**"
-    branches:
-      - main
+  pull_request:
+    branches: [client]
 
 jobs:
   ClientBuildCD:
     runs-on: ubuntu-20.04
+    if: startsWith(github.head_ref, 'client/') == true
     defaults:
       run:
         shell: bash
