@@ -12,7 +12,7 @@ export const deleteUserResolver = {
     }
     const { name, _id, email } = (await findUserByEmail({ ...args })) || {};
 
-    if (!_id) {
+    if (!_id || !email) {
       return {
         status: { code: 400 },
         node: {

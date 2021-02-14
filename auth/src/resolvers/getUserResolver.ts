@@ -1,3 +1,4 @@
+import { Document } from "mongoose";
 import { UserType } from "../models/user/index";
 import { findUser } from "../utils/selectors";
 import { validateGetUserInput } from "./../validation/validateGetUserInput";
@@ -11,38 +12,40 @@ export const getUserResolver = {
     }
     const { email, name } = args;
     return findUser({ ...args })
-      .then(async (existingUser: UserType) => {
-        if (!existingUser?.email && email) {
-          return {
-            status: { code: 400 },
-            node: {
-              errors: {
-                email: `User with email ${email} not found.`,
+      .then(
+        async (existingUser: UserType | (UserType & Document<any>) | null) => {
+          if (!existingUser || (!existingUser?.email && email)) {
+            return {
+              status: { code: 400 },
+              node: {
+                errors: {
+                  email: `User with email ${email} not found.`,
+                },
               },
-            },
-          };
-        } else if (!existingUser?.email && name) {
+            };
+          } else if (!existingUser?.email && name) {
+            return {
+              status: { code: 400 },
+              node: {
+                errors: {
+                  name: `User with name ${name} not found.`,
+                },
+              },
+            };
+          }
+
           return {
-            status: { code: 400 },
+            status: { code: 200 },
             node: {
-              errors: {
-                name: `User with name ${name} not found.`,
+              user: {
+                name: existingUser.name,
+                email: existingUser.email,
+                _id: existingUser._id,
               },
             },
           };
         }
-
-        return {
-          status: { code: 200 },
-          node: {
-            user: {
-              name: existingUser.name,
-              email: existingUser.email,
-              _id: existingUser._id,
-            },
-          },
-        };
-      })
+      )
       .catch((error: any) => ({ status: { code: 400, error } }));
   },
 };

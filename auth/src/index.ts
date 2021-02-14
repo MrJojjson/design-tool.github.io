@@ -1,4 +1,4 @@
-import { join } from "path";
+import { resolve } from "path";
 import { loadSchemaSync } from "@graphql-tools/load";
 import { GraphQLFileLoader } from "@graphql-tools/graphql-file-loader";
 import { addResolversToSchema } from "@graphql-tools/schema";
@@ -9,9 +9,10 @@ import { json } from "body-parser";
 import { connect } from "mongoose";
 import resolvers from "./resolvers";
 import cors from "cors";
+
 require("dotenv").config();
 
-const schema = loadSchemaSync(join(__dirname, "./schemas/*.graphql"), {
+const schema = loadSchemaSync(resolve(__dirname, "schemas/*.graphql"), {
   loaders: [new GraphQLFileLoader()],
 });
 
@@ -47,6 +48,7 @@ app.use(
 );
 
 const PORT = process.env.PORT || 3002;
+
 app.listen(PORT, () => {
   console.log(`Auth server is listening on port: ${PORT}`);
 });
