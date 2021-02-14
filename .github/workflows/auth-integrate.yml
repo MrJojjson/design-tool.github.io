@@ -1,15 +1,12 @@
 name: Auth CI
 
 on:
-  pull_request:
+  push:
     branches:
       - "auth/**"
-    paths:
-      - "auth/**"
-      - ".github/workflows/auth-integrate.yml"
 
 jobs:
-  build:
+  AuthBuildCI:
     runs-on: ubuntu-20.04
     defaults:
       run:
@@ -34,12 +31,5 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install yarn with frozen lockfile
         run: yarn install --frozen-lockfile
-      - name: Build auth with tsc to ./build
+      - name: Build auth
         run: yarn build
-      #- run: git add -A && git commit -m "Updated auth code"
-      - uses: akhileshns/heroku-deploy@v3.10.9
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "poletas"
-          heroku_email: ${{secrets.EMAIL}}
-          appdir: "./auth/build"
