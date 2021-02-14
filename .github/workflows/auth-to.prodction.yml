@@ -9,18 +9,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-20.04
+    if: github.head_ref == auth/*
     defaults:
       run:
         shell: bash
         working-directory: auth
 
     steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          echo "$GITHUB_CONTEXT"
-          echo ${{ github.event.pull_request.title }}
+      - run: echo ${{github.ref}}
+      - run: echo ${{github}}
       - uses: actions/checkout@v2
       - name: Use Node.js
         uses: actions/setup-node@v1
