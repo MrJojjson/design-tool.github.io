@@ -2,11 +2,13 @@ name: Client CI
 
 on:
   pull_request:
-    branches: [client]
+    types:
+      - "opened"
 
 jobs:
-  ClientBuildCI:
+  Node:
     runs-on: ubuntu-20.04
+    if: startsWith(github.head_ref, 'client/') == true
     defaults:
       run:
         shell: bash

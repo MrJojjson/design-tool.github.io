@@ -17,7 +17,6 @@ COPY . .
 RUN yarn build
 RUN yarn copy:files:docker
 
-RUN echo "Oh dang look at that $process"
 # Bundle app source
 
 EXPOSE 8080
