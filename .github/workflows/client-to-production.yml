@@ -1,8 +1,9 @@
 name: Client CD
 
 on:
-  pull_request:
-    branches: [client]
+  push:
+    branches:
+      - main
 
 jobs:
   ClientBuildCD:
