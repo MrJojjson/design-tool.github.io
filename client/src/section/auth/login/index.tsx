@@ -22,15 +22,14 @@ export const Login = () => {
         password: '',
     });
     const [errors, setErrors] = useState<LoginErrors>({});
-    const [loginUser] = userLoginUserMutation(LOGIN_USER);
+    const { loginUser, data } = userLoginUserMutation(LOGIN_USER);
+    console.log('data', data);
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         loginUser({
             variables: { ...user },
             update: (cache: ApolloCache<LoginUserMutationType>, { data }: FetchResult<LoginUserMutationType>) => {
-                console.log('hj');
-
                 if (data) {
                     const { errors } = data.loginUser?.node;
                     setErrors(errors);
@@ -49,7 +48,6 @@ export const Login = () => {
 
     const setUserData = (currentTarget: EventTarget & HTMLInputElement) =>
         setUser({ ...user, [currentTarget.id]: currentTarget.value });
-    console.log('user', user);
 
     const removeError = (field: keyof LoginUserType) => setErrors({ ...errors, [field]: '' });
 
@@ -63,23 +61,23 @@ export const Login = () => {
             <form className="form" noValidate onSubmit={(e: React.FormEvent<HTMLFormElement>) => onSubmit(e)}>
                 <Input
                     onBlur={({ currentTarget }) => setUserData(currentTarget)}
-                    onChange={() => errors.email && removeError('email')}
+                    onChange={() => errors?.email && removeError('email')}
                     label="Email"
                     placeholder="abc@abc.com"
                     id="email"
                     type="email"
                     autoComplete="email"
-                    error={errors.email}
+                    error={errors?.email}
                 />
                 <Input
                     onBlur={({ currentTarget }) => setUserData(currentTarget)}
-                    onChange={() => errors.password && removeError('password')}
+                    onChange={() => errors?.password && removeError('password')}
                     label="Password"
                     placeholder="One password to rule them all"
                     id="password"
                     type="password"
                     autoComplete="current-password"
-                    error={errors.password}
+                    error={errors?.password}
                 />
                 <Button label="Login" onClick={() => {}} type="submit" theme="secondary" />
             </form>

@@ -33,26 +33,18 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install yarn with frozen lockfile
         run: yarn install --frozen-lockfile
-      - name: Build, Push and Deploy to Heroku #set the whatever name you want to this step
-        id: heroku
-        uses: jctaveras/heroku-deploy@v1.0.0 # use the latest version of the action
+      - name: Build
+        run: yarn build
+      - uses: akhileshns/heroku-deploy@v3.10.9
         with:
-          email: ${{ secrets.EMAIL }} # your heroku email
-          api_key: ${{ secrets.HEROKU_API_KEY }} # your  heroku api key
-          app_name: ${{ secrets.HEROKU_APP_NAME }} # you aplication name
-          dockerfile_path: "./auth/"
-      # - name: Build
-      #   run: yarn build
-      # - uses: akhileshns/heroku-deploy@v3.10.9
-      #   with:
-      #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-      #     heroku_app_name: "poletas"
-      #     heroku_email: ${{secrets.EMAIL}}
-      #     appdir: "./auth"
-      #     usedocker: true
-      #     docker_build_args: |
-      #       NODE_ENV
-      #       SECRET_KEY
-      #   env:
-      #     NODE_ENV: production
-      #     MONGODB_CLOUD_KEY: ${{ secrets.MONGODB_CLOUD_KEY }}
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          heroku_email: ${{secrets.EMAIL}}
+          appdir: "./auth"
+          usedocker: true
+          docker_build_args: |
+            NODE_ENV
+            SECRET_KEY
+        env:
+          NODE_ENV: production
+          MONGODB_CLOUD_KEY: ${{ secrets.MONGODB_CLOUD_KEY }}

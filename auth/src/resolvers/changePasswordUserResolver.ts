@@ -19,7 +19,7 @@ export const changePasswordUserResolver = {
     return findUserById({ _id })
       .then(
         async (existingUser: UserType | (UserType & Document<any>) | null) => {
-          if (!existingUser || !existingUser?.email) {
+          if (!existingUser?.email) {
             return {
               status: 400,
               node: {

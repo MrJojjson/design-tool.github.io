@@ -8,20 +8,18 @@ import { Document } from "mongoose";
 export const registerUserResolver = {
   registerUser(_: any, args: UserType) {
     const { errors, isValid } = validateRegisterInput(args);
-    console.log("errors", errors);
 
     if (!isValid) {
       return { status: { code: 400 }, node: { errors } };
     }
 
     const { name, email, password } = args || {};
+    console.log("args", args);
 
     return findUserByEmail({ email })
       .then(
         async (existingUser: UserType | (UserType & Document<any>) | null) => {
-          console.log("existingUser", existingUser);
-
-          if (!existingUser || existingUser?.email) {
+          if (existingUser?.email) {
             return {
               status: { code: 400 },
               node: {

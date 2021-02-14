@@ -8,11 +8,11 @@ import { LoginUserMutationType } from '../common/types/loginType';
 // }
 
 export function userRegisterUserMutation(gqlQuery: DocumentNode) {
-    const [registerUser] = useMutation<RegisterUserMutationType>(gqlQuery);
-    return [registerUser];
+    const [registerUser, { data }] = useMutation<RegisterUserMutationType>(gqlQuery);
+    return { registerUser, data };
 }
 
 export function userLoginUserMutation(gqlQuery: DocumentNode) {
-    const [loginUser] = useMutation<LoginUserMutationType>(gqlQuery);
-    return [loginUser];
+    const [loginUser, { data }] = useMutation<LoginUserMutationType>(gqlQuery);
+    return { loginUser, data };
 }

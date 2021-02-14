@@ -15,7 +15,7 @@
   "scripts": {
     "start:client": "cd ./client && yarn start:dev",
     "start:server": "cd ./server && yarn start",
-    "start:auth": "cd ./auth && yarn start",
+    "start:auth": "cd ./auth && yarn start:dev",
     "start:all": "concurrently \"yarn start:server\" \"yarn start:auth\" \"yarn start:client\""
   },
   "dependencies": {
