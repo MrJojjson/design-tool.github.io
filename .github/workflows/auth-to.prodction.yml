@@ -33,7 +33,7 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build auth with tsc
         run: yarn build
-      - uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.10.9
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "poletas"
