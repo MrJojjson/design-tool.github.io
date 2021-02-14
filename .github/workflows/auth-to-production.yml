@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  AuthBuildCD:
+  AuthCD:
     runs-on: ubuntu-20.04
     if: contains('refs/heads/auth', github.ref)
     defaults:
