@@ -1,7 +1,7 @@
 name: Auth CI
 
 on:
-  push:
+  pull_request:
     branches:
       - "auth/**"
 
