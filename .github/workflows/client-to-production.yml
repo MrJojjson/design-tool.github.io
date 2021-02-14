@@ -1,14 +1,14 @@
 name: Client CD
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 jobs:
   ClientBuildCD:
     runs-on: ubuntu-20.04
-    if: startsWith(github.head_ref, 'client/') == true
+    if: contains('refs/heads/client', github.ref)
     defaults:
       run:
         shell: bash
