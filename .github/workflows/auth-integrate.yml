@@ -4,12 +4,13 @@ on:
   pull_request:
     branches:
       - "auth/**"
-    types: [opened]
+    paths:
+      - "auth/**"
+      - ".github/workflows/auth-integrate.yml"
 
 jobs:
   build:
     runs-on: ubuntu-20.04
-    if: startsWith(github.head_ref, 'auth/') == true
     defaults:
       run:
         shell: bash
