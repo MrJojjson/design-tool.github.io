@@ -1,12 +1,10 @@
 name: Auth CD
 
 on:
-  push:
+  pull_request:
     branches:
       - main
-    paths:
-      - "auth/**"
-      - ".github/workflows/auth-to-production.yml"
+    types: [closed]
 
 jobs:
   build:
