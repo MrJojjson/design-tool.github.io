@@ -2,11 +2,11 @@ name: Auth CI
 
 on:
   pull_request:
-    branches: [auth]
 
 jobs:
   AuthBuildCI:
     runs-on: ubuntu-20.04
+    if: startsWith(github.head_ref, 'auth/') == true
     defaults:
       run:
         shell: bash
