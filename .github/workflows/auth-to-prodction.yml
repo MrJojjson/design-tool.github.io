@@ -35,10 +35,10 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build auth with tsc to ./build
         run: yarn build
+      - run: git add -A && git commit -m "Updated auth code"
       - uses: akhileshns/heroku-deploy@v3.10.9
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "poletas"
           heroku_email: ${{secrets.EMAIL}}
           appdir: "./auth/build"
-          remote_branch: "main"

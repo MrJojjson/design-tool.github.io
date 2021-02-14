@@ -39,4 +39,3 @@ jobs:
           heroku_app_name: "poletas"
           heroku_email: ${{secrets.EMAIL}}
           appdir: "./auth/build"
-          remote_branch: "main"
