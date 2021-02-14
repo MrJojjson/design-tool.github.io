@@ -1,4 +1,4 @@
-name: Auth CD
+name: Auth CI
 
 on:
   pull_request:
