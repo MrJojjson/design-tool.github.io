@@ -1,14 +1,14 @@
 name: Auth CD
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
 jobs:
   AuthBuildCD:
     runs-on: ubuntu-20.04
-    if: github.ref == 'refs/heads/client/**'
+    if: startsWith(github.head_ref, 'auth/') == true
     defaults:
       run:
         shell: bash
