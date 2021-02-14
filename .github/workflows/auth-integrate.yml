@@ -1,15 +1,12 @@
-name: Auth CD
+name: Auth CI
 
 on:
   pull_request:
-    branches:
-      - main
-    types: [closed]
+    branches: "auth/**"
 
 jobs:
   build:
     runs-on: ubuntu-20.04
-    if: startsWith(github.head_ref, 'auth/') == true
     defaults:
       run:
         shell: bash
